@@ -16,7 +16,7 @@ Notes and selected problem solutions from a string theory reading group at UBC i
 
 ## Contributing
 
-If you're a member in the group, send a PR! For notes & problem sets you can add files with any of the following formats:
+If you're a member in the group, give me your github username and you will be granted push access. For notes & problem sets you can add files with any of the following formats:
 
 - pdf
 - tex
