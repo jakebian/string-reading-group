@@ -1,6 +1,6 @@
 # String Reading Group Pedagogy/ resources
 
-Please add to this - click the edit button at the bottom.
+Please add to this.
 
 ## CFT
 
