@@ -5,10 +5,12 @@ Please add to this.
 ## CFT
 
 - [Blumenhagen's book](http://www.amazon.ca/Introduction-Conformal-Field-Theory-Applications/dp/3642004490)
-A straightforward introduction
+A straightforward introduction.
 
 - [Di Francesco's book](http://www.amazon.com/Conformal-Theory-Graduate-Contemporary-Physics/dp/038794785X)
 The standard physicist reference, a little dense.
+
+- [Tong's notes](http://www.damtp.cam.ac.uk/user/tong/string/four.pdf) Like Polchinki and unlike the other references here this dives right into field theory and covers facts about the conformal group & algebra as it moves along. Much easier reading than Polchinski though.
 
 - [Schottenloher: CFT for mathematicians](http://www.amazon.ca/Mathematical-Introduction-Conformal-Field-Theory/dp/3540686258)
 This excels at being really clear about things that other books just gloss over, for example it discusses in detail what a central extension is.
