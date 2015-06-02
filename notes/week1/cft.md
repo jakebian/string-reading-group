@@ -5,7 +5,7 @@ Some Notes on CFTs
 
 *Jake Bian, May 2015. *
 
-This is (yet another) pedagogical review of conformal field theories, with a slight emphasis on clarifying the geometric aspects.
+This is (yet another) pedagogical review of conformal field theories, with a slight emphasis on clarifying the geometric aspects. This is a work in progress.
 
 
 [toc]
@@ -42,11 +42,16 @@ We follow a now-typical sequence for introducing CFTs
 
 1. **The "C" in CFT**: Introduce conformal group and its action on (pseudo-)  Riemannian manifolds in general. 
 2. **The "FT" in CFT**:  Introduce conformally invariant field theories. 
-3. **CFTs in real life**:  Go through canonical examples of CFTs
 
-    Since these notes are a part of a course following Polchinski's book, in light of the fact that we don't exactly follow Polchinski's (rather confusing) CFT chapter, we will conclude these notes with:
+These are followed by three appendices
 
-**Appendix: CFTs according to a friend**: Summarize how Polchinski derives the same results that we derive here as well as picking out terminology mismatches that we may have introduced.
+**Appendix A: Hilbert space foliations, lattices & local operators** This appendix outlines how (I think) field theory Hilbert space should be understood in general.
+
+**Appendix B: Ads/CFT as an Operator-to-operator map** This appendix attempts to explain some results from the correspondence using only the tools introduced in these notes.
+
+**Appendix C: CFTs according to a friend**:   Since these notes are a part of a course following Polchinski's book, in light of the fact that we don't exactly follow Polchinski's (rather confusing) CFT chapter, this appendix tries to reconcile our notation with Joe's. 
+
+These notes were covered in two talks, which is very a very likely cause for the excess amount of content in the appendices.
 
 
 # The "C" in CFT
@@ -384,17 +389,38 @@ This is a very well-known result for the group $Diff(S^1)$ is very well-studied 
 Observe
 
 $l_n$ is non-singular at $0$ only for $n \ge -1$
-$l_n$ is non-singular at $\inf$ only for $n \le 1$
+$l_n$ is non-singular at $\infty$ only for $n \le 1$
 
-Hence the globally we have three generators $\{l_{-1}, l_0, l_1\}$. Observe this looks a lot like the case we had for $d>2$.
+Hence the globally we have three generators $\{l_{-1}, l_0, l_1\}$.  Hence just like in $d>2$, the algebra of globally defined conformal transformations is finite. Let's consider these one by one:
 
-First observe, clearly $l_{-1}$ generates translations
+$$P_z \equiv  l_{-1} = - \partial_z, \\
+P_\bar z \equiv  \bar l_{-1} = - \partial_\bar z $$
 
-Now choose $z = e^{i \phi}$, we see combinations of $l_0$ with its anti-holomorphic dual generates rotations and dilations.
+This clearly generates translations so let's give it another name.
 
- - The remaining one is the special conformal transformation
+Writing $z = re^{i \phi}$, we find:
 
-Observe combinations these are exactly the mobius trnasformations.
+$$l_{0} = -  \frac12 \partial_r + \frac i2 \partial_\phi \\ 
+    \bar l_{0} = -  \frac12 \partial_r - \frac i2 \partial_\phi
+$$
+
+
+We can define linear combinations:
+
+$$ D \equiv l_0 + \bar l_0 = -r \partial_r \\
+L \equiv i(l_0 - \bar l_0) = -\partial_\phi$$
+
+The remaining one is the special conformal transformations
+
+$$ K_z \equiv l_1 = - z^2 \partial_z \\
+ K_\bar z \equiv  \bar  l_1 = - \bar z^2 \partial_ \bar z$$
+
+In summary, we have labeled our (global) conformal algebra by the symmetry transformation they generate, and obtained the set
+
+$$\{ P, D, L, K \}$$ 
+
+Where $P$ and $K$ are vectors, $D$ and $L$ each have a single component. 
+This is in fact the general picture in higher dimensions as well. In $d>2$,  $L$ becomes an anti=symmetric tensor, $D$ remains a scalar, $P$ and $K$ remain vectors.
 
 
 ## Quantizing the 2D algebra: Virasoro Algebra
@@ -405,6 +431,7 @@ There's a very general story relating central extension of groups to quantizatio
 
 Quantizing infinitesmall, locally conformal maps on the mobius sphere has a nice analogy that we're already familiar with - quantizing generators of translations in phase space, $(x, p)$. We will briefly  demonstrate here that quantization in that case is simply using the centrally extended algebra.  Equivalently, we are moving to the projective representation from the full representation, which is equivalent to adding a central charge to the full representation.
 
+TODO: finish writing this up.
 
 ### Virasoro is Central extension of Witt
 - using Jacobi identities that the Witt algebra satisfies, we see that the Virasoro algbera is completely fixed up to a central charge, to be fixed by your specific theory.
@@ -413,11 +440,11 @@ Quantizing infinitesmall, locally conformal maps on the mobius sphere has a nice
 
 ## Classical conformal field theory
 
-While defining a quantum field theory is in general not easy, Wightman axioms and what not. Defining a classical field theory is rather easy, so let's first take a look at the classical aspects of CFTs.
+
 
 ### Primary Conformal Fields
 
-In CFTs we start by employing what may seem like a rather unconventional definition of a classical field. Here the definition we need to employ is:
+Turns out the central objects in field theory can be defined as things in a classical field theory
 
 > A primary conformal field *behaves* like the $(z, z, ... , \bar z, \bar z, ...)$ component of a $(h, \bar h)$ tensor over $M$ under a conformal transformation
 
@@ -428,91 +455,386 @@ $$\Phi(z, \bar z) \mapsto \left( \frac{\partial f}{\partial z} \right) ^ h \left
 
 If this only holds for global conformal maps, the field is said to be quasi-primary. 
 
+Infinitesmally, one can show:
+
+$$\delta_{\varepsilon K, \varepsilon \bar K} \phi(z, \bar z)= \varepsilon (h \partial_z K + K \partial_z) \phi(z, \bar z) + \text{anti-holomorphic} $$
+
+This can be taken as an alternative definition of a primary field, we will encounter two more definitions of a primary field. To learn CFTs (roughly) is to learn to appreciate the various equivalent definitions of a primary field.
 
 ### Momentum Tensor
 
-Here we show that Conformal invariance implies a traceless momentum tensor. The only facts we need to recall about the momentm tensor is that it's traceless, and that  Noether's theorem says $$j_\mu = T_{\mu\nu} K^\nu$$ is preserved. Tracelessness of momentum tensor comes from $\partial^\mu partial_\mu = 0$
+#### Conformal implies traceless
+Here we show that Conformal invariance implies a traceless momentum tensor. The only facts we need to recall about the momentm tensor is that it's traceless, and that  Noether's theorem says
+
+$$j_\mu = T_{\mu\nu} K^\nu$$ 
+
+is preserved. Tracelessness of momentum tensor comes from $\partial^\mu j_\mu = 0$
 
 - In particular, for the case that $K$ is a translation (a constant), we find
 $$\partial^\mu T_{\mu\nu} = 0$$
 
 - Using the above we can eliminate a term from the Leibneiz rule.
-- Sneakily using the fact the $T$ is symmetric, write the remaning term in the form of the conformal killing equation. The result is:
+- Sneakily using the fact the $T$ is symmetric, write the remaining term in the form of the conformal killing equation. The result is:
 $$T^\mu_\mu = 0$$
  
+ 
+#### $d = 2$ case: holomorphic momentum tensor
 
-## What is a CFT
+In complex coordinates in 2 dimensions, the result is the following:
 
-### As a path integral
-For mathematical concreteness, it is beneficial to define a field theory as a path integral with all of its n-point correlators. For CFTs, we may define it as all correlators between primary fields.
+- $T_{z \bar z} = T_{\bar z z} = 0$
+- $T_{zz}$ is holomorphic
+- $T_{\bar z \bar z}$ is anti-holomorphic
 
-### As a Hilbert Space
+Motivated by this, we define $T(z) \equiv T_{zz}$, $T(\bar z) \equiv T_{\bar z \bar z}$. These completely specify the momentum tensor in 2 dimensions.
 
-- There exists a vacuum $| 0 \rangle$ invariant under some representation of the conformal group.
+## The CFT Hilbert Space
 
-Following traditional Peskin-Schroeder-esque sloppiness one of the ways to obtain a Hilbert space for the field theory is to obtain a Hamiltonian. So let's talk about radial quantization.
+I recommend glancing over **appendix A** at this point.
+
+### Conformal theory on $S^1 \times \mathbb{R}$
+
+So far we have been considering conformal transformations and field theories over a general Riemannian (Euclidean) manifold $M$ [^euclidean-comment]. For concreteness, we now restrict ourselves to the case that $M \sim S^1 \times \mathbb{R}$, most directly visualized as the cylinder. One should note that many aspects of the discussion below can be generalized straightforwardly to the field theory on $S^n \times \mathbb{R}$.[^slavanotes]
+
+[^euclidean-comment]:  One would of course obtain the Minkovskian version through a Wick rotation, given that the topology of $M$ allows this to be done without severe consequences. In the case that $M$ is not nice enough to behave well under a wick rotation, there will likely be other more serious problems plaguing any QFT defined on $M$
+
+[^slavanotes]: https://sites.google.com/site/slavarychkov/
+
+#### The radial map
+
+$S^1 \times \mathbb{R}$ of course has a global cover - for the purposes of defining a field theory over $M$ there's no reason to use any other cover than the global cover. The most direct/natural coordinates are probably:
+
+$$(t, x) \in  \mathbb R \times [0, 2\pi)$$
+
+An alternative cover can be defined in terms of this one:
+
+$$(z, \bar z) \equiv (e^{t + ix}, e^{ t - ix})$$
+
+This map is clearly a diffeomorphism:
+
+$$\mathbb R \times [0, 2\pi) \to \mathbb C - \{0\}$$
+
+Hence both these are global covers of $M$. The former is easier pictured as a cylinder whereas the latter is easier pictured as a punctured disc (or an annulus) with infinite (outer) radius.
+
+It can be easily seen that for transformations in $M$, we have the following dual interpretations in these two coordinate systems:
+
+Cylinder                     | Annulus
+---------------------------- | -------
+Translation in $t$ direction | Dilation
+Translation in $x$ direction | Rotation
+
+Consider some classical field theory defined over $M$ with local coordinate $t$ being interpreted as the time direction.  Then, very concretely, when one writes our field theory Hamiltonian (time evolution operator) in the annulus coordinates, it would becomes the dilation generator. Similarly a translation in the $x$ direction would look like a rotation operator in the annulus coordinates.
 
 
 
+#### Labeling of conformal killing vectors is coordinate dependent
 
-## The setting of CFT: Radial quantization
-- mention: it's technically an annulus, not a disk!
-### The coordinate map
-### From cylinder operators to disk operators
+A clarification is in order - recall we defined a conformal transformation as a coordinate-independent map $M \to M$. However, we now we have a situation where a dilation in one coordinate for $M$ is not a dilation on another coordinate system.
 
-### The CFT Hilbert Space
-#### Virasoro Reps
-### Hilbert Space
-### Quantizing Laurent Modes
-### Asymptotic states
+The takeaway from this is that although conformal transformation is defined globally and coordinate-independently, the classification of conformal algebra elements (into dilations, translations, special conformal transformations, etc.) is coordinate dependent. That is, although we have a single set of Killing vectors, and a single conformal group and algebra, we don't know how to label these vector fields over $M$ until we go to some coordinates. The algebra of the Poincare generators on the cylinder is interpreted as the algebra of dilations and rotations on the annulus.
 
-## The CFT Path Integral
-### The path integral
-### EM tensor
+One can perhaps summarize and generalize this in the phrase "physical interpretation is coordinate-dependent, mathematics is not". This distinction between coordinate-independent mathematical objects and coordinate-dependent physical interpretations carries over to the quantum theory. See **Appendix A**. 
 
-## More on CFT Operators
-### Radial ordering
-### Normal ordering
 
-## Primary fields & Conformal Dimension
 
-## OPEs
-### OPE Existence
-### Momentum Tensor
+### States & operators in CFT
+
+Our approach is to learn as much as possible about states and operators in $d=2$ CFTs by only studying elements of the Virasoro algebra.
+
+#### Verma Modules
+
+Denotes our Virasoro algebra by $\{ L _n \}_{n \in \mathbb Z}$, recall the commutation relation is:
+
+$$
+[L_m, L_n]= (m-n)L_{m + n} + c \delta_{-m, n}
+$$
+
+Along with another algebra withe same commutation relations which commutes with this, denoted by $\{ \bar L _n \}_{n \in \mathbb Z}$.
+
+Recall our dilation operator is given by
+
+$$D = L_0 + \bar L_0$$
+
+A few lines of computation shows:
+
+$$[D, L_n] = - n L_n$$
+
+This tells us that in some representation of the Virasoro algebra on a Hilbert space,  with respect to eigenstates of the operator representation of $D$:
+
+- $L_n$ for $n < 0$ are creation operators
+- $L_n$ for $n > 0$ are annihilation operators
+
+Given a highest weight state $|h\rangle$, that is, a state $h$ that is anihilated by all $L_n$ for $n > 0$. Any such state $h$ defines a *Verma Module* $V_h$ given by the set of states:
+
+$\{ |h \rangle, \\  L_{-1}|h \rangle,  \\ L_{-1}L_{-1}|h \rangle, L_{-2}|h\rangle,\\ ... \}$
+
+These highest weight states $h$ are called primary states, and the rest of the states are known as descendents of $h$.  
+
+#### Primaries & Descendants
+
+> **Defintion**: A **primary state** is a state $|\phi \rangle$ such that $L_n | \phi \rangle = 0$ for all $n > 0$.
+
+By the above discussion, each primary state defines a set of descendent states to form the Verma module $V_\phi$. For completeness let's state
+
+> **Defintion**: A **descendent state** is any state obtained by acting on a primary state $|\phi \rangle$ with a composition of any sequence of
+> operators $L_n$ with $n < 0$.
+
+Now consider a primary state which can be written as
+
+$$ |\phi \rangle = \phi |0 \rangle$$
+
+where of course $|0 \rangle$ is the field theory vacuum. (For now we can think of the states that can be written in the above form as a special class of states. It will turn out all states we care about in a CFT have this property, more on this later.) This motivates the definition of a primary operator:
+
+> **Definition**: A **primary operator** is a linear operator $\phi$ on CFT Hilbert space such that $$[L_n , \phi] = 0$$
+
+And similarly
+
+> **Defintion**: A **descendent operator** is any operating obtained by appending (by composition) to a primary operator $\phi$ a composition
+> of any sequence of operators $L_n$ with $n < 0$.
+
+To make contact with our definition of a primary operator in terms of transformation properties, it is necessary to work out some OPEs.
+
+#### Momentum tensor and Virasoro Algebra
+
+The holomorphic part of the momentum tensor has a Laurent expansion:
+
+$$T(z) = \sum_{n \in Z} z^{-n - 2}L_n$$
+
+with:
+
+$$L_n = \frac 1 {2 \pi i} \oint dz [z^{n+1}T(z)]$$
+
+(You can see there's again some contrived index shifting here, since we thoroughly motivated the index shifting in the Witt algebra we leave it as an exercise to figure out why the shifting here is convenient.)
+
+It is easy to show that $L_n$ form Noether charges associated with the $n$-th generator of the Witt algebra. It can be verified by computing the OPE that $L_n$ satisfies the Virasoro algebra. 
+
+
+
+## CFT Correlators
+
+### Quantities of interest
+
+#### Correlators
+In a quantum field theory, we're interested in correlators like:
+
+$$\langle O_1(x_1) _2(x_2) ... \rangle$$
+
+Where the $O$s are operators on field theory Hilbert space. In the path integral formalism the above reads
+
+$$\int [\mathcal DO_1O_2... ] e^{iS[O_1, O_2, ...]}  O_1(x_1)O_2(x_2)...$$
+
+with a normalization factor that we left out. In the canonical picture this reads:
+
+$$\langle 0 | T [O_1(x_1) O_2(x_2) ...] | 0 \rangle$$
+
+In the following we adopt the perhaps confusing, but standard notation
+
+$$ O_1(x_1) O_2(x_2) ...\equiv \langle O_1(x_1) O_2(x_2) ... \rangle$$
+
+
+#### Radial ordering
+
+Recall in our CFT on a cylinder, time direction in the cylinder coordinates is interpreted as time. Switching to the annulus coordinates, clearly time ordering in the cylinder gets translated to ordering based on distance from origin, also known as the usual norm in $\mathbb C$. Hence radial ordering looks like:
+
+$$R[A(z) B(w)] \equiv A(z)B(w) \theta(|z| - |w|) + B(w)A(z) \theta(|w| - |z|)$$
+
+where $\theta$ is the heaviside step function in $\mathbb R$.
+
+As an integrand, we show that the above has a neat interpretation in 2D CFT.
+
+We first note the general identity:
+
+$$ \oint_{|z| > |w|}dz - \oint_{|z| < |w|}dz  = \oint_{C(w)}dz$$
+
+where $C(w)$ is a loop around $w$, $|z| > |w|$ is any curve for which $|z| > |w|$, etc.
+
+Applying this to our radial ordering expression:
+
+$$\oint_{C(w)}dz~ R[A(z) B(w)] \\
+= \left(\oint_{|z| > |w|}dz - \oint_{|z| < |w|}dz \right)R[A(z) B(w)]\\
+= \oint_{|z| > |w|}dz A(z)B(w) - \oint_{|z| < |w|}dzB(w)A(z) \\
+= \oint dz R(A(z)B(w)) - \oint R(B(w)A(z)) \\
+= \oint R([A(z), B(w)]) \\
+= \oint [A(z), B(w)]  $$
+
+where in the last three lines, the integration is around any curve which encloses an analytic neightborhood of $w$. In the last line we dropped the $R$ to embrace our sloppy but standard notation.
+
+
+#### Normal ordering
+
+In quantum field theory, *normal ordering* is defined as moving all 'creation' modes of an operator to the right. It is related to time ordering by Wick's theorem:
+
+$$T\{\phi_1\phi_2...\} = N \{ \phi_1\phi_2... +\text{ all Wick contractions} \}$$
+
+In a CFT, we will discover another useful expression for the normal ordered product, but that requires some knowledge of OPEs, to which we now turn.
+
+### A first OPE: momentum tensor
+Following Blumenhagen's book, working out the OPE for the product 
+$T \phi$ for some primary field $\phi$ is an exercise that is useful for both pedagogical and conceptual reasons. Pedagogically, this serves as a good first exposure to OPEs and radial ordering. Conceptually, the resulting OPE allows us to connect the tensorial definition of primary fields to the representation theoretic definition given in the previous section.
+
+Once again, we remind the reader that all operator expressions below are to be seen as VEVs of time ordered products.
+
+Let's fix a time $x^0$. Recall Noether's theorem tells us that the charge associated with a symmetry of the field theory (CTs in our case) is the integral of 0-th component of current over space, in 2 dimensions this reads:
+
+$$Q = \int j^0 dx^1 $$
+
+In a quantum theory, the charge is promoted to an operator, and we have the property under conformal transformation, any (bounded) Hilbert space operator $O$ transforms as:
+
+$$ \delta O = [ Q, O]$$ 
+
+Recalling
+$$j_\mu = T_{\mu\nu} K^\nu$$ 
+
+TODO: finish writing this
+
+The result is:
+
+$$T(z) \phi(w, \bar w) = \frac h {(z - w)^2}\phi(\omega, \bar \omega) + \frac 1 {(z - w)} \partial_\omega \phi(\omega, \bar \omega) + \text{non-singular terms}$$
+
+Similarly for anti-holomorphic component of $T$. 
+
+This is called an operator-product expansion. Aside from the self-explanatory name, we note the singular terms on the RHS are multiplied by the operators $\phi$ and its derivatives. This is always the case for OPEs.
+
+This OPE can be taken as yet another alternative definition of a primary field. 
+
+
+### State-operator Isomorphism
+
+Going back to identifying the Virasoro algebra generators with Laurent modes of momentum tensor, for $n = 0$, we have: 
+
+$$L_0 = \frac 1 {2 \pi i} \oint dz [zT(z)]$$
+
+We can now use the OPE we just obtained to compute the quantity  $ [L_0, \phi(w, \bar w)]$.
+
+We find that taking the following limit yields a rather nice result:
+
+$$[L_0, \phi(0)] = h \phi(0)$$
+
+where $$ \phi(0)\equiv\lim_{w, \bar w \mapsto 0} \phi( w, \bar w)$$
+
+Similarly:
+$$[\bar L_0, \phi(0)] = \bar h \phi(0)$$
+
+Combined together this yields:
+
+$$[D, \phi(0)] = (h + \bar h) \phi(0)$$
+
+Acting on the vacuum state, this reads
+
+$$D| \phi\rangle = (h + \bar h) | \phi \rangle$$
+
+where $| \phi\rangle\equiv \phi(0) |0 \rangle$. For this reason, $\triangle \equiv h + \bar h$ is called the **conformal weight** of $\phi$. 
+
+Replacing $D$ with $L \sim L_0 - \bar L_0$ in the above analysis, we find that $ h - \bar h$ are the angular momentum eigenvalues of $|\phi\rangle$, for this reason $l \equiv h - \bar h$ is called the **conformal spin** of $\phi$.
+
+To summarize, we just showed:
+
+- A primary field of conformal dimensions $(h , \bar h)$ evaluated at the origin acting on the vacuum generates an eigenstate of $D$ with weight $\triangle$ and spin $l$.
+- Conversely every eigenstate of $D$,  $|\triangle, s\rangle$, can be generated by some by a primary operator with weight $(\triangle + l, \triangle - l)$
+
+This is called the **operator-state-correspondance**. One can say that it's an isomorphism if we identify all primary fields with the same conformal dimensions.
+
+By a similar computation one can also show
+
+$$L_n | \phi \rangle = 0 ~~\forall n > 0$$
+
+This reconciles the primary field definition based on transformation properties with the definition as highest-weight states which specify Verma modules containing a set of descendent states.
+
+
 ### 2 & 3 point functions
-### Ward Identities
-### "CFT Data"
 
-## CFT Interactions
-### Vertex Operator
-### c-theorem
+### The general OPE
 
-## Operator-state correspondance
-### Operator-state correspondance in general
-### Operator-state correspondance in CFTs
-### AdS/CFT as a operator to operator map
-- Aside: AdS interactions & Witten diagrams
-### OPE Associativity/ Conformal Bootstrap
+#### From 2 & 3 point functions
 
-# CFTs in Real Life
+#### As an axiom
 
-## The Free scalar boson
-In this section we apply what we learned to the free CFT scalar boson.
-### The theory
-### Momentum Tensor
-### Correlators
-### Central Charge
-### Fock space
+#### A Weinbergian "proof"
 
-## Other examples
+#### CFT data & bootstrap
 
-We describe these other examples, and leave the details of the conformal theories as excercises/reading assignments.
 
-### bc CFT
-### Linear Dilaton
-### Free 
+# Appendix A: Hilbert space foliations, lattices & local operators
 
-# Appendix: CFTs according to a friend
+To clearly understand the notions of local operators, vertex operators,  foliation of Hilbert space & radial quantization, it is beneficial to think of spacetime as a union of spatial lattices.
+
+## The "canonical" picture
+
+Consider the statement:
+
+$$O_x \text{ is a local operator acting at } x$$
+
+In the "canonical" (e.g. Peskin & Schroeder) picture of QFT Hilbert space, this means $O$ is an operator-valued distribution over our spacetime $M$, that is sharply peaked at $x \in M$. 
+
+If one were to write the product of two such local operators $O_xO_y$, one would picture a composition of these sharp operator-valued distributions. We suggest that the lattice interpretation of this, as described below, is much cleaner.
+
+
+
+## Hilbert space foliation from spacetime foliation
+
+In the lattice decomposition of Hilbert space, one associates a Hilbert space to each point in space:
+
+$$x \mapsto H_x$$
+
+
+Let $B \times \mathbb{R} \equiv \{B_t | t \in \mathbb{R}\}$ be a foliation of $M$. For each leaf $B_t$ in the foliation, we can define a subspace of $H$ associated with $B_t$:
+
+$$\tilde H_{t} \equiv \otimes^{x \in B_t} H_x$$
+
+Our full Hilbert space is given by:
+
+$$ H = \cup^{t \in R} \tilde H_t \sim \mathbb{R} \times \tilde H_0 $$
+
+where we've assumed the Hilbert space leaves are isomorphic (given that we started with a foliation of $M$ where all leaves are isomorphic, this assumption is mild). We demand there exists unitary operators which map between these leaves in Hilbert space:
+$$U(s) : \tilde H_t \to \tilde H_{t + s}$$
+
+One then has the picture where computing a correlator is the same thing taking a ground state at the $t = -\infty$ leaf, map it to the $t = \infty$ leaf by $U$, then take a inner product with the ground state there.
+
+## Hilbert space is foliation independent
+It makes an interesting and non-trivial exercise to show that this Hilbert space is in fact independent of your choice of foliation. Here we provide a hint.
+
+One might observe that two points $x$ and $y$ on the same leaf in one foliation may lie in different leaves given a different foliation. One can then consider an entangled state between the Hilbert spaces at each of these points, which naively would live on  $H_x \otimes H_y$, and observe that this space is only a subspace of our total Hilbert space if the foliation is chosen such that $x$ and $y$ lie on the same leaf. The trick out of this dilemma is to realize that such a state can be represented in a foliation where $x$ and $y$ lie on different leaves by mapping the degrees of freedom onto the same leaf through the unitary map. These are the kind of tricks needed to show that total Hilbert spaces constructed from different foliations are in fact isomorphic.
+
+## Local operators in the lattice decomposition
+
+In this picture, the statement:
+
+$$O_x \text{ is a local operator acting at } x$$
+
+can be simply stated as
+
+$$O_x \text{ is a linear operator on the subspace } H_x$$
+
+And the product of two such operators
+
+$$O_xO_y$$
+
+is to be seen as the operator:
+
+$$(O_x \otimes I ) \dot{}(I \otimes O_y) $$
+
+acting on the subspace $H_x \otimes H_y$. At least to the me this formalism is much cleaner and more visual.
+
+
+The vacuum state of the QFT Hilbert space, on each time slice, is given in the lattice picture by:
+
+$$|0\rangle \equiv \otimes^{x \in B_t}|0\rangle_x$$
+
+where $|0\rangle_x$ is the state annihilated by the annihilation  operator $a(x)$, an operator on $H_x$.
+
+## Foliation of CFT Hilbert space
+
+Somewhere in these notes we presented the cylinder and annulus coordinates for the manifold $M = S^1 \times \mathbb{R}$. There we mentioned that our physical theory, as a collection of mathematical objects, should be viewed as a field theory defined over $M$, in a coordinate-independent manner. We are free to switch between different physical interpretations by switching coordinates.
+
+Let's consider structure of our QFT Hilbert space following our the discussion on foliation above.  In the cylinder coordinates, one would construct a sequence of hilbert spaces using with time slices and unitary evolution generated by the Hamiltonian. But after we've constructed this Hilbert space using restrictions from our physical interpretation, we are free to look at the field theory we defined in a coordinate-independent way. Switching to radial coordinates, we see that we have foliated our Hilbert space into radial slices related by transformations generated by (representations of) integral curves of the dilation operator. Although we mentioned that Hilbert space should be foliation independent (up to an isomorphism), in practice field theorists tend to pick a foliation and stick with it. This is the one we pick.
+
+
+
+# Appendix B: AdS/CFT as an operator-to-operator map
+## The operator statement of the duality 
+## Bulk interactions & Witten diagrams
+
+# Appendix C: CFTs according to a friend
 
 ## Chapter 1 results in CFT language
 
