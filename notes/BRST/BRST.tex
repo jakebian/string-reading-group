@@ -1,0 +1,405 @@
+\documentclass[notitlepage,amsmath,amssymb,aps, pra, 10pt]{revtex4-1}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{tikz}
+
+% Derivatives & Integrals
+\newcommand{\der}[2][]{\frac{d#1}{d#2}}
+\newcommand{\pd}[2][]{\frac{\partial#1}{\partial#2}}
+\newcommand{\vd}[2][]{\frac{\delta#1}{\delta#2}}
+\newcommand{\sInt}{\int_{\Sigma}\, d^3x \,}
+
+\begin{document}
+
+\title{BRST Quantization }
+
+\author{Matt Beach}
+\affiliation{University of British Columbia}
+\date{\today}
+\begin{abstract}
+    Some notes based on chapter four of Polchinski's \emph{String Theory} Vol. I.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Overview}
+    The BRST quantization is a mathematically rigourous method to quantizing a gauge theory. It originally sought to provide a deeper understanding of Faddeev-Popov ghosts, while maintaining manifest Lorentz invariance. It has also become clear this the BRST method is geometric in nature, and related to the Hamiltonian formalism. BRST make it easy to identify physical states of the theory. Some authors have even questioned whether BRST symmetry is more fundamental that gauge theory, with the later being a simple corollary.
+
+\section{BRST Symmetry}
+    Consider a theory with over matter fields $\phi$, gauge fields $A_{\mu}$, and ghost fields $\omega, \omega^*$ with the gauge transformation
+    \begin{align}
+        [t_{\alpha}, t_{\beta}] &= f^{\,\,\gamma}_{\alpha\beta} t_{\gamma}.
+    \end{align}
+    with the structure constants $f_{\alpha\beta\gamma}$. We assume that the structure constants do not depend on the fields $\phi$ and that there are no additional terms proportional to the equations of motion on the right hand side of the commutator. If either of these assumptions is broken, we must use the general formalism of \emph{Fradkin, Batalin}, and \emph{Vilkovisky} (FBV). (The reason being that the BRST charge is not nilpotent in that case).
+
+    We would normally gauge fix $F^{\alpha} = 0$ and use the Fadeev-Popov method, to obtain the functional integral
+    \begin{align}
+        Z &= \int \frac{[d\phi] }{V_{\rm gauge}}e^{-S} \rightarrow \int [d \phi_i\, d\omega \,d\omega^*]\, e^{-S  -S_{\rm g}} \delta(F^{\alpha}(\phi)).
+    \end{align}
+
+    Instead, consider writing the gauge fixing delta-function as functional integral over a new field $B$, which we could take to have a gaussian representation $B \sim e^{\int F_{\alpha}F_{\alpha}}$. Inserting this ansatz into the generating functional gives. The final integral is
+        \begin{align}
+        Z &= \int [d \phi_i\, dB_{\mu} \, d\omega_{\alpha} \,d\omega_{\beta}^*]\, e^{-S  -S_{\rm g} - S_{\rm gauge\,fix}}
+    \end{align}
+    where $S$ is the original action, $S_{\rm g}$ is the ghost action and $S_{\rm gauge\,fix}$ is the gauge fixing term introduction via the functional integral representation of the delta-function. Explicitly we can take
+    \begin{align}
+        S_{g} &= t_{\alpha} {\omega}^{\alpha}  \omega_A^* F^{A}(\phi),\\
+        S_{\rm gauge\,fix} &=-i B_A F^{A}(\phi).
+    \end{align}
+
+    This integral is not gauge invariant, nor should it be! But there is an interesting symmetry of this integral which was studied by BRS and independently by T, which says for an infinitesimal transformation, the integral is invariant under
+    \begin{align}
+        \delta_{\theta} \phi &= -i \theta t_{\alpha} \omega_{\alpha} \phi,\\
+        \delta_{\theta} A_{\alpha \beta} &= \theta D_{\mu} \omega_{\beta},\\
+        \delta_{\theta} \omega_{\alpha}^* &= \theta B_{\alpha},\\
+        \delta_{\theta} \omega_{\beta} &= \frac{i}{2} \theta f_{\alpha\beta\gamma}\omega_{\beta}\omega_{\gamma},\\
+        \delta_{\theta} B_{\mu}  &= 0.
+    \end{align}
+    where $\theta$ is an anticommuting constant.
+
+    The BRST transformation is \emph{nilpotent}, that is, for a functional $F[\phi, B, \omega, \omega^*]$, the transformation applied twice gives zero, i.e., $\delta_{\theta}\delta_{\theta} F = 0$. The charge $Q_{\theta}$ associated with this transformation can be defined implicitly through
+    \begin{align}
+        \delta_{\theta} \mathcal{O} & = i [\theta Q_{\theta}, \mathcal{O}]
+    \end{align}
+    for some field operator $\mathcal{O}$. Notice that the charge $Q_{\theta}$ is also nilpotent since $Q^2 = 0$ (the possibility that $Q_{\theta} = 1$ is excluded because it would have ghost number 2).
+
+
+\section{BRST Quantization}
+    Since the action is BRST invariant, the physical states of the theory also must be. This is expressed through
+    \begin{align}
+        Q_{\theta} | \rm phys \rangle &=0
+    \end{align}
+
+    The nilpotence of $Q_{\theta}$ also has another important consequence. Consider a state $| \psi_Q  \rangle = Q_{\theta} | \psi \rangle$. It is a physical state since $Q_{\theta} |\psi_Q \rangle = Q_{\theta}^2 | \psi \rangle = 0$. Now consider another physical state $| {\rm phys} \rangle$ and notice that it is orthogonal to $|\psi_Q\rangle$ since $\langle {\rm phys} | \psi_Q \rangle = \langle {\rm phys} |Q| \psi\rangle = 0$. We can conclude that any \emph{null} state, $|\psi_Q\rangle$ can be added to any physical state $| {\rm phys} \rangle$ and remain physically the same. We thus associate physical states with an equivalent class of states under addition of a null state. This is the \emph{cohomology} or $Q_{\theta}$.
+
+    In mathematics, the physical states (annihilated by $Q_{\theta}$ are usually called \emph{closed}, and the null states are called \emph{exact}. So our physical space $\mathcal{H}_{\rm BRST}$ is the physical space quotienting out null states,
+    \begin{align}
+        \mathcal{H}_{\rm BRST} &=  \mathcal{H}_{\rm phys} / \mathcal{H}_{\rm null}   = \mathcal{H}_{\rm closed} / \mathcal{H}_{\rm exact}
+    \end{align}
+
+\section{Point-particle Quantization}
+    Consider a particle described by the einbein action
+    \begin{align}
+        S &= \frac{1}{2} \int d\tau \, \left(\frac{1}{v}\dot x^{\mu}\dot x_{\mu} - v m^2  \right)
+    \end{align}
+
+    The local symmetry is reparameterizaiton invariance, so $\delta_{\tau_1} \tau = \delta(\tau -\tau_1)$. The structure constants for this symmetry can be worked out by evaluating $[\delta_{\tau_1}, \delta_{\tau_2}]$, etc. and turn out to be
+    \begin{align}
+      f^{\tau_3}_{\tau_1 \tau_2} &= \delta(\tau_3-\tau_1)\partial_{\tau_3} \delta(\tau_3 - \tau_2) -\delta(\tau_3-\tau_1)\partial_{\tau_3} \delta(\tau_3 - \tau_1)
+    \end{align}
+    so that the BRST transformation is
+    \begin{align}
+    \delta_{\theta}x^{\mu} &= i \theta\omega \dot x^{\mu},\\
+    \delta_{\theta}v &= i \theta\dot \omega v,\\
+    \delta_{\theta}\omega^* &=  \theta B,\\
+    \delta_{\theta}\omega &= i \theta\omega \dot \omega,\\
+    \delta_{\theta} B &=0.\\
+    \end{align}
+
+    The action involves three parts,
+    \begin{align}
+        S &= \frac{1}{2} \int d\tau \, \underbrace{\frac{1}{v}\dot x^{\mu}\dot x_{\mu} - v m^2}_{\rm particle}  +\underbrace{2iB(v-1)}_{\rm gauge} - \underbrace{2v\omega \omega^*}_{\rm ghost}
+    \end{align}
+
+    To make things easier, we can eliminate $B$ in the integral by gauge fixing  the einbein $v=1$, so formally $F(\tau) = 1 - v(\tau)$
+    \begin{align}
+        S &= \frac{1}{2} \int d\tau \, \frac{1}{v}\dot x^{\mu}\dot x_{\mu} - v m^2-2\omega \omega^*
+    \end{align}
+
+    The BRST transformation for $\omega^*$ is then not obvious because $B$ is no longer relevant. We need to replace $B$ by something so that $\delta_{\theta} \omega ^* \neq 0 $ but the transformation remains nilpotent.
+
+    One possibility is to use an equation of motion, namely the $v$ equation of motion
+    \begin{align}
+        {\rm EOM}_{v} &= -\frac{1}{2} \dot x_{\mu} \dot x^{\mu} + \frac{1}{2}m^2 - \omega^* \omega
+    \end{align}
+    so that the BRST transformation is
+    \begin{align}
+    \delta_{\theta}x^{\mu} &= i \theta\omega \dot x^{\mu},\\
+    \delta_{\theta}\omega^* &=  \theta \ {\rm EOM}_{v},\\
+    \delta_{\theta}\omega &= i \theta\omega \dot \omega,\\
+    \end{align}
+
+    One can check that this is indeed a symmetry of the action and that $Q_{\theta}$ is still nilpotent. The (Euclidean) Hamiltonian for this action is $H = \frac{1}{2} ( p^2 + m^2) $ and the Noether charge is
+    \begin{align}
+        Q_{\theta} &= \omega H
+    \end{align}
+
+    Consider a basis of simultaneous eigenstates to $\omega, \omega ^*, p^{\mu}$. Since we can only have ghost numbers $-1, 1$, we have only two ghost states $| k, 0\rangle, | k, 1 \rangle$ which are also labelled by their momentum $k$.
+    \begin{align}
+      p^{\mu} | k, n \rangle &= k^{\mu} | k,  n \rangle,\\
+      \omega | k, n \rangle &=  | k,  n+1 \rangle,\\
+      \omega^*| k, n \rangle &= | k, \ n-1 \rangle.
+    \end{align}
+
+    The BRST charge can also act on the states as
+    \begin{align}
+        Q_{\theta} | k, n \rangle &=\frac{1}{2} ( p^2 + m^2)  | k, n +1 \rangle
+    \end{align}
+    so the physical state are ones in which $k^2 + m^2 = 0 $ or $ n = 1$. The null states are $n = 1$ with $k^2 + m^2 \neq 0 $. So if we quotient out the null states, then our new physical states are ones which must satisfy $k^2 + m^2 = 0$ which are called on mass-shell. It turns out that only states with $n=0$ actually contribute to scattering amplitudes.
+
+\section{String Quantization}
+    The string quantization is very similar to the point-particle one, however more care must be taken  in constructing physical states.
+
+    We begin by choosing a gauge fixing of the world-sheet metric. It has 3 gauge degrees of freedom two diffeomorphism invariance, one Weyl invariance, which can all be fixed by simply setting $g_{ab} = \delta_{ab}$, i.e. fixing to unit gauge. Our fixing equaiton is
+    \begin{align}
+        F^{ab}(g_{ab}) &= g_{ab} - \delta_{ab}.
+    \end{align}
+
+    consider a string with action
+    \begin{align}
+        S &= \frac{1}{4\pi \alpha'} \int d^2\sigma\, \sqrt{g} \left[\underbrace{g^{ab}\partial_a X^{\mu}\partial_b X_{\mu}}_{\rm Polyakov}  +\underbrace{i \alpha ' B^{ab}(\delta_{ab} - g_{ab})}_{\rm gauge\,fix} - \underbrace{2\alpha' b_{ab}\hat\nabla^{a} c^{b}}_{\rm ghost} \right]
+    \end{align}
+    and we can choose the conformal gauge for simplicity so that
+    \begin{align}
+        S_{\rm ghost} &= \frac{1}{2\pi}\int d^2z \left( b_{zz} \partial_{\bar{z}} c^{z} + b_{\bar z \bar z} \partial_z c^{\bar z}\right)
+    \end{align}
+
+    The BRST transformation rules are then
+    \begin{align}
+        \delta_{\theta} X^{\mu} &= i \theta (c \partial + \tilde c \bar \partial ) X^{\mu},\\
+        \delta_{\theta} b &= i \theta ( T^{X} + T^{g} ) ,\\
+        \delta _{\theta} \tilde b &= i \theta (\tilde T^{X} + \tilde T^{g} ),\\
+        \delta_{\theta} c &= i \theta c \partial_c,\\
+        \delta_{\theta} \tilde c &= i \theta \tilde c \bar \partial_{\tilde c}.
+    \end{align}
+    where again we used the trick to replace $B$ by the equation of motion for $g_{ab}$. The Noether currents associated with this symmetry are
+    \begin{align}
+        \hat j_{\theta} &= cT^m +:bc\partial c:,\\
+        \hat \tilde j_{\theta} &= \tilde cT^m +:\tilde b\tilde c\partial\tilde c:,
+    \end{align}
+    but this is not a tensor, so we add another term which is still respects the symmetry to get the tensor currents
+    \begin{align}
+        j_{\theta} &= cT^m +:bc\partial c: + \frac{3}{2} \partial^2c,\\
+        \tilde j_{\theta} &= \tilde cT^m +:\tilde b\tilde c\partial\tilde c: + \frac{3}{2} \partial^2\tilde c,
+    \end{align}
+
+    The charge (operator) is defined as
+    \begin{align}
+        Q_{\theta} &= \frac{1}{2\pi i} \oint ( dz \, j_{\theta} - d\overline z \, \tilde j_{\theta}).
+    \end{align}
+
+    By evaluating OPE's of the BRST current with the ghost fields, one can work out that
+    \begin{align}
+        \{Q_{\theta} , b_M \} &= L_m^{\rm m} + L_m^{\rm g}.
+    \end{align}
+
+    The charge can also be expanded in terms of ghost modes as
+    \begin{align}
+        Q_{\theta} &= a^{\theta}(c_0 + \tilde c_0)
+         +
+        \sum_{n=-\infty}^{\infty}  \left(c_n L_{-n}^{\rm m} + \tilde c_n \tilde L_{-n}^{\rm m}\right)
+        +
+        \sum_{n=-\infty}^{\infty}\frac{ (m-n)}{2} : c_m c_n b_{-m-n} +  \tilde c_m \tilde c_n \tilde b_{-m-n}:
+    \end{align}
+    with $a^{\theta} = -1$.
+
+    There is an anomaly in the BRST formalism. Whereas previously $Q_{\theta}$ was assured to be nilpotent, it is not only nilpotent if $c^m = 26$,
+    \begin{align}
+        \{ Q_{\theta} , Q_{\theta} \} &= 0 \qquad \text{only if } c^m = 26.
+    \end{align}
+
+    \subsection{The Open String Spectrum}
+
+        Just like the particle quantization, physicals states must satisfy $Q_{\theta}|\rm phys \rangle = 0$. There is an additional condition for strings that $b_0| \rm phys \rangle = \langle \rm phys |b_0 = 0$. That is, the $b$ zero-modes annihilate both physical bra's and ket's. This implies the so-called \emph{mass shell condition}
+         \begin{align}
+         L_0 | \rm phys \rangle &= \{ Q_{\theta}, b_0\}| \rm phys \rangle= 0
+         \end{align}
+
+        The operator $L_0$ can be expanded as
+        \begin{align}
+            L_0 &= \frac{\alpha_0^2}{2}
+            +
+            a^{\theta}
+            +
+            \sum_{n=1}^{\infty} \alpha_{-n} \alpha_n
+            +
+            \sum_{n=1}^{\infty}n\,c_{-n} b_n
+            +
+            \sum_{n=1}^{\infty}n\,b_{-n} c_n\\
+            &= \alpha' p^2
+            - 1
+            + \sum_{n=1}^{\infty} n \, \sum_{\mu=1}^{25} \left( N_n^{\mu} + N^{c}_{n} + N^b_n\right)\\
+            &= \alpha' p^2 - 1 + N
+        \end{align}
+        with $N$ the total level operator. The mass-shell condition then implies
+        \begin{align}
+            m^2 = -k^2 = \frac{1}{\alpha'}(N-1).
+        \end{align}
+
+        The most general string state is then
+        \begin{align}
+            |N, k\rangle = \sum_{\mathcal{A}} C_A \left[ \prod_{\mu = 0}^{25} \prod_{n=1}^{\infty} \frac{(\alpha_{-n}^{\mu}) N^{\mu}_n}{\sqrt{N_n^{\mu}! \, n^{N_n^{\mu}}}} \right]
+            \left[ \prod_{n=0}^{\infty} (c_{-n})^{N^c_n} \right]
+            \left[ \prod_{n=1}^{\infty} (b_{-n})^{N^b_n} \right]
+            |0, k \rangle
+        \end{align}
+        where $|0, k \rangle$ is the string vacuum, and $\mathcal{A}$ is the set of all quantum number operators ($N_{n}^{\mu}, ...$) which sum to $N$. Also $C_A$ is a normalization coefficient. Note that the ghost quantum numbers can only ever be 0 or 1. Also notice that $b_0$ is not included in this expansion. This is because $b_0$ annihilates any physical states.
+
+        Let's look at each level of this spectrum individually.
+
+        \subsubsection{First Level: N=0 (Tachyon)}
+
+            There are two possible states at this level,
+            \begin{align}
+                |0, k\rangle, \qquad c_0|0, k\rangle, \qquad \qquad \text{with } m^2 = -k^2 -=-\frac{1}{\alpha'}
+            \end{align}
+            The tachyon state is denoted by $|0, k\rangle$ and is a physical state. The second one is not physical since $b_0c_0|0, k\rangle = |0, k\rangle \neq 0$
+
+     \subsubsection{Second Level: N=1 (Photon)}
+
+        The most general state for $N=1$ is
+        \begin{align}
+            |1, k\rangle = (e\alpha_{-1} + \beta b_{-1} + \gamma c_{-1}) |0, k\rangle \qquad \text{with } m^2 = -k^2 = 0
+        \end{align}
+        where $e^{\mu}$ is a 26-dimensional vector and $\beta, \gamma$ are constants, thus there are 26+2 linearly independent states.
+        The inner product is
+        \begin{align}
+            \langle 1, k | 1, k\rangle &= (
+            \alpha^* \cdot \alpha
+            +
+            \beta^*\gamma
+            +
+            \beta\gamma^*
+            )
+            \langle 0, k | 0, k\rangle.
+        \end{align}
+        which is only positive for 26 of the 28 states. The positive norm states are
+        \begin{align}
+            \alpha_{-1}^{i} | 0, k\rangle \qquad i\in{1, 2, ..., 25},\\
+            2^{-1/2} ( b_{-1} + c_{-1}) | 0, k\rangle.
+        \end{align}
+
+        The two negative norm states are
+        \begin{align}
+            \alpha_{-1} ^ 0 | 0, k\rangle,\\
+            2^{-1/2} ( b_{-1} - c_{-1}) | 0, k\rangle.
+        \end{align}
+
+        By applying the physical condition $Q_{\theta}| 1, k\rangle = 0$ condition to the positive norm states, we see that physical states must satisfy
+        \begin{align}
+            k\cdot e = \beta = 0
+        \end{align}
+        so the most general $N=1$ states are
+        \begin{align}
+            |1, k\rangle = (e\alpha_{-1} + \gamma c_{-1}) |0, k\rangle \qquad \text{with } k\cdot e = 0.
+        \end{align}
+
+        Now we need to apply the mass-shell condition to these remain states. It is convenient to work in the basis
+        \begin{align}
+            c_{-1}  |0, k\rangle, \qquad k\cdot \alpha_{-1}|0, k\rangle, \qquad  \alpha_{-1}^i|0, k\rangle
+        \end{align}
+
+        The first two states can be shown to be \emph{exact}, i.e. null states and thus excluded from the physical spectrum. We are left with simply
+        \begin{align}
+           \alpha_{-1}^i|0, k\rangle \qquad i\in{2, ..., 25},
+        \end{align}
+        as a basis for the physical states of our theory with a specific momentum. In general, we could make this more manifestly Lorentz invariant by  introducing a vector $e$ so the true 24 physical states are
+        \begin{align}
+        |1, k\rangle &= e \cdot \alpha_{-1}|0, k\rangle \qquad k^2 = e\cdot k = 0.
+        \end{align}
+
+        The vector $e$ is like the polarization and since the states are massless, they are easily identified as photon states.
+
+    \subsection{The Closed String Spectrum}
+
+        The derivation of the closed string spectrum is very similar to that of the open string spectrum. The physical states must satisfy
+        \begin{align}
+          Q_{\theta} |N, \tilde N, k\rangle &=0, \\ b_0 |N, \tilde N, k\rangle &=0, \\
+          \tilde b_0 |N, \tilde N, k\rangle &=0.
+        \end{align}
+
+        Notice that we label states by both $N$ and $\tilde N$, however it must be the case the $N = \tilde N$.
+
+        \subsubsection{First Level: N=0 (Tachyon)}
+
+                    There are two possible states at this level,
+                    \begin{align}
+                        |0, 0, k\rangle, \qquad c_0|0, 0, k\rangle, \qquad \qquad \text{with } m^2 = -k^2 -=-\frac{4}{\alpha'}
+                    \end{align}
+                    (The factor of $1/4$ is from fact that the closed string has a different relation between the spacetime momentum and zero-modes, as compared to the open string).
+        \subsubsection{Second Level: N=1}
+
+                    The no-ghost theorem provides a nice way of calculating the closed string spectrum. For the sake of brevity, I will simply state the results here. The most general massless physical state of the closed string is
+                    \begin{align}
+                        | 1, 1 , k \rangle &=
+                        \sum_{i,j = 2}^{25} C_{ij} \alpha_{-1}^i \alpha_{-1}^j |0,0,l\rangle,\\
+                        &=
+                        \sum_{i,j = 2}^{25}
+                        \left(
+                        \left[ C_{(ij)}
+                        -
+                        \frac{1}{24}\delta_{ij}C\right]
+                        +
+                        \left[C_{[ij]}
+                        +
+                        \frac{1}{24}\delta_{ij}C\right]
+                        \right)\alpha_{-1}^i \alpha_{-1}^j |0,0,l\rangle,
+                    \end{align}
+                    with the symmetric state called the \emph{graviton} and the antisymmetric one called the \emph{axion}, and the scalar state the \emph{dilaton}.
+
+\section{The no-ghost Theorem}
+
+    We will only focus on the open string theorem here. The closed one follows the same method but adding the anti-holomorphic operators everywhere. 
+
+    Define the transverse Hilbert space $\mathcal{H}^{\perp}$ as the set of opens string states obeying the mass-shell condition which are not excited by $X^0, X^1, b, c$. These are the states excited by $\alpha^i_{n}$ with $i \in {2, ...25}$ which satisfy the mass-shell condition.
+
+    The no-ghost theorem states that the BRST cohomology (set of physicals states) is isomorphic to $\mathcal{H}^{\perp}$.
+
+     There is a two step proof of this theorem. First it is shown that $\mathcal{H}^{\perp}$ is isomorphic to the cohomology of a different nilpotent operator $Q1$. Then it is shown that the cohomology of $Q1$ is isomorphic to the full $Q_{\theta}$ cohomology.
+
+     We define the usual light-cone modes
+     \begin{align}
+       \alpha_m^{\pm} &= s^{-1/2} ( \alpha^0_m \pm \alpha^1_m)
+     \end{align}
+     which satisfy the usual commutation relations $[\alpha_m^+, \alpha_n ^-] = -m \delta_{m, -n}$ all others are zero. Also define the number operator
+     \begin{align}
+       N^{\rm lc} &= \sum_{m = -\infty\, m\neq 0} ^{m = \infty} \frac{1}{m} : \alpha^+_{-m} \alpha^-_{m}:
+     \end{align}
+    which counts the number of $-$ excitations minus the number of $+$ excitations. Notice it does not include include zero-modes. We then decompose $Q_{\theta} = Q_1 + Q_0 + Q_2$ where $Q_j$ means there are $N^{\rm lc} = j$. Expanding $Q_{\theta}^2 = 0$ gives
+    \begin{align}
+      (Q_1^2) + (\{Q_1, Q_0\}) + (\{ Q_1, Q_{-1} \} + Q_0^2) + (\{Q_0, Q_{-1}\}) + (Q_{-1}^2) &= 0
+    \end{align}
+    where each term in parenthesis vanishes since it has a different $N^{\rm lc}$, (2,1,0,-1,02) respectively. Thus $Q_1$ and $Q_{-1}$ are nilpotent operators which can be expanded as
+    \begin{align}
+        Q_1 &= -2 \sqrt{2\alpha'} k^+ \sum_{m = -\infty\, m\neq 0} ^{m = \infty} c_m \alpha_{-m}^-,\\
+        Q_{-1} &= -2 \sqrt{2\alpha'} k^- \sum_{m = -\infty\, m\neq 0} ^{m = \infty} c_m \alpha_{-m}^+.
+    \end{align}
+    
+    Via a Lorentz transformation, it is always possible to have $k^+ \neq 0 $ so the definition above is well-defined. Moreover, we define 
+    \begin{align}
+        R &= \frac{1}{\sqrt{2\alpha'} k^+} \sum_{m = -\infty\, m\neq 0} ^{m = \infty} \alpha_{-m}^+ b_m,\\
+        S &= \{ Q_1, R\}\\
+         &=\sum_{m = 1}^{\infty} (mb_{-m} c_m + mb_m c_{-m} +  \alpha_{-m}^+ \alpha_{m}^- +  \alpha_{-m}^- \alpha_{m}^+)\\
+        &= \sum_{m = 1}^{\infty} m(N_{bm} + N_{cm} + N_{m}^+ + N_m^-).
+    \end{align}
+    
+    Since $Q_1$ and $S$ commute, we have simultaneous eigenstates $|\psi, s>$ such that 
+    \begin{align}
+        Q_1 |\psi, s> &= |\psi>,\\
+        S |\psi, s> &= s|\psi > ,
+    \end{align}
+    which implies 
+    \begin{align}
+        |\psi> &= \frac{1}{s} \{ Q_1, S\} |\psi> = \frac{1}{s} Q_1 R |\psi>
+    \end{align}
+    which means for $s\neq0$, $|\psi>$ is an exact state of $Q_1$. Therefore the cohomology is completely determined by the closed states with $s=0$. Therefore since $S|\psi> = 0$, we have
+    \begin{align}
+        Q_1 S |\psi> = S Q_1 |\psi> = 0
+    \end{align}
+    so $|\psi>$ has zero ghost number and $Q_1|\psi>$ has ghost number one. Since $S$ is invertible for this ghost number, the physical condition $Q_1 |\psi> = 0$ is automatically satisfied so $\psi>$ is always exact. The cohmology of $Q_1$ is just the kernel of $S$. Moreover, $S$ was constructed simply by longitudinal excitations, so it's keneral is isomorphic to $\mathcal{H}^{\perp}$.
+    
+    Now we wish to show the cohomology of $Q_1$ is isomorphic to that of $Q_{\theta}$. Define $U = \{Q_0+ Q_{-1}, R\}$ so that
+    \begin{align}
+        S + U &= \{Q_{\theta}, R\}.
+    \end{align}
+    
+    Using the same arguments as above, we see that $Q_{\theta}$ is isomorphic to the kernel of $S+U$. The last step is to show the kernels of $S$ and $S+U$ are isomorphic. Consider the map from a state $|\psi>$ of $S$ to $S+U$ via 
+    \begin{align}
+        |\psi'> &= (1+S^{-1}U + S^{-1}US^{-1}U -...) |\psi>.
+    \end{align} 
+    This state is annihilated by $S+U$ and so proves the no-ghost theorem.
+    
+    
+    
+\end{document}
