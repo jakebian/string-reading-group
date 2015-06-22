@@ -9,7 +9,8 @@ Notes and selected problem solutions from a string theory reading group at UBC i
 
 ## Notes
 
-- [Week 1: CFTs](notes/week1)
+- [Week 1 - 2: CFTs](notes/cfts)
+- [Week 3 - 4: The Polykov Path Integral](notes/polykov-path-integral)
 
 ## Problems
 - [Week 0: Overview & String Action](problems/week0)

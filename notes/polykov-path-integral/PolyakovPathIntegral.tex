@@ -1,0 +1,920 @@
+\documentclass[11pt, oneside]{amsart}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\newtheorem{defn}{Definition}
+\newtheorem{proppy}{Proposition}
+\newtheorem{thm}{Theorem}
+\newcommand{\normord}[1]{:\mathrel{#1}:}
+\newcommand{\tikzcircle}[2][red,fill=red]{\tikz[baseline=-0.5ex]\draw[#1,radius=#2] (0,0) circle ;}
+
+
+
+\title{Gauge Theories, the Polyakov Path Integral, and the S-Matrix}
+\author{Stephen Pietromonaco - UBC Strings Reading Group `15}
+\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+The main point of these notes is to understand Polchinski Vol. 1 Chapter 3 in some detail, drawing on other sources.  We initially talk about Yang-Mills theory which, admittedly, is a little bit out of place, but is in some sense the natural setting for path integrals with a gauge redundancy.  This is where the Fadeev-Popov determinant naturally arises, which will also play a role for us later on.
+\vskip1ex
+Before getting to this, we introduce the Polyakov path integral and some basic geometric intuition in perturbative string theory.  We then carry out the gauge fixing of the Polyakov action where we see the appearance of the Fadeev-Popov determinant, as the analog of the Jacobian which arises when integrating some function over a sub-manifold.  This leads naturally to a discussion of the bc-ghost conformal field theory and the Weyl anomaly.  
+\vskip1ex
+We then introduce the mathematical formalism of Riemann surfaces, specifically as they apply to scattering amplitudes, vertex operators, and the string S-matrix.  
+\vskip2ex
+
+
+\section{Yang-Mills Gauge Theory}
+\vskip2ex
+
+The formalism here is essentially identical to that of vector/fibre bundles in geometry.  
+\vskip2ex
+\subsection{Abelian Yang-Mills Theory}
+\vskip2ex
+Once we insert the figure of the geometry, point out that the gauge transformations $\psi(x) \to e^{i \theta(x)}\psi(x)$ and $\psi^{\dagger}(x) \to e^{-i\theta(x)}\psi^{\dagger}(x)$  will leave the matter Lagrangian invariant provided we also transform the connection by $A_{\mu}(x) \to A_{\mu}(x)-i\partial_{\mu} \theta(x)$.  
+\vskip1ex
+
+Then describe that the exterior derivative of the connection is the ``curvature:"  
+\vskip1ex
+
+The geometrical framework behind abelian Yang-Mills theory lies in attaching a complex line bundle structure to spacetime, which we think of as the base space.  From an intuitive point of view, we simply attach a copy of $\mathbb{C}$, called the fiber, to each point of the base space.  
+\vskip1ex
+We need to specify how nearby fibers relate to each other.  A good example to keep in mind is the difference between the cylinder and the Mobius band as line bundles over $\mathbb{S}^{1}$.  We introduce a 1-form  $A_{\mu}(x)$ called a \emph{connection} which tells us exactly how the fibers ``connect."  This is actually conceptually the same as the connections familiar from General Relativity: in that context, we need a recipe for how to move between tangent space at different points on a manifold.  The connections $ \Gamma^{\rho}_{\,\, \nu \sigma}$ tell us exactly how to do this.  
+\vskip1ex
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=11cm]{LineBundle.jpg}
+\caption{A complex line bundle over a base space $M$.  Each fiber is a copy of $\mathbb{C}$ and the connection $A_{\mu}(x)$ tells us how nearby fibers differ, in some sense.  A scalar field or wavefunction can be thought of as a section of the bundle, pictured in red.}
+\label{fig:nonfloat}
+\end{center}
+\end{figure}
+\vskip1ex
+
+
+
+A key point to have in mind is that the connection $A_{\mu}(x)$ is part of the underlying geometry of the fiber bundle and base space; it is independent of all the extra structure we're about to define.  
+\vskip1ex
+
+We think of a wave function or scalar field $\psi(x)$ as a section of this line bundle.  We need a clear criterion for determining when such a function is ``constant" in this new geometry.  Essentially, we want $\psi(x^{\mu}+dx^{\mu})=\psi(x^{\mu})$ for all displacements $dx^{\mu}$.  However, we should recall that the connection $A_{\mu}(x)$ deals exactly with this issue of moving between nearby fibers. 
+\vskip1ex
+
+We can show that,
+\vskip1ex
+
+\begin{equation}
+\psi(x^{\mu}+dx^{\mu}) =\psi(x^{\mu})+dx^{\mu}(\partial_{\mu}+i A_{\mu}(x))\psi(x^{\mu})+\mathcal{O}\bigg((dx^{\mu})^{2}\bigg)
+\end{equation}
+\vskip1ex
+
+If that second term vanishes globally, then our function will be constant.  This motivates us to define the \emph{Covariant Derivative} as,
+\vskip1ex
+\begin{equation}
+D_{\mu}= \partial_{\mu}+i A_{\mu}(x)
+\end{equation}
+\vskip1ex
+
+Globally constant functions are thus characterized by $D_{\mu} \psi(x) =0$.  We then define the \emph{curvature} tensor which is usually called the field strength,
+\vskip1ex
+
+\begin{equation}
+F_{\mu \nu}= \partial_{\mu} A_{\nu}-\partial_{\nu} A_{\mu}
+\end{equation}
+\vskip2ex
+
+
+
+
+
+
+
+
+\subsection{The Vacuum is Flat Classically}
+\vskip2ex
+
+We want to build the action of the world such that the classical field equations constrain the curvature to vanish $F_{\mu \nu}=0$.  The action that satisfies this is familiar,
+\vskip1ex
+\begin{equation}
+S=-\frac{1}{4} \int d^{4}x F_{\mu \nu}F^{\mu \nu}
+\end{equation}
+\vskip1ex
+Of course, this simply tells us the dynamics of $A_{\mu}(x)$ itself, if we want to include matter in the theory we need other terms which will mean that the curvature will not vanish in that case.  
+\vskip1ex
+We know that in quantum mechanics the classical field equations aren't exactly satisfied but rather weighted the heaviest in the path integral.  
+
+
+
+\vskip2ex
+\subsection{How Gauge Symmetry Affects the Path Integral}
+\vskip2ex
+
+Gauge Orbits described by $(\psi, \psi^{\dagger}, A_{\mu}) \to(e^{i\theta(x)}\psi, e^{-i\theta(x)}\psi^{\dagger}, A_{\mu}-i\partial_{\mu}\theta(x))$.  
+
+
+
+
+
+\vskip2ex
+\subsection{Non-abelian Yang-Mills Theory}
+\vskip2ex
+\begin{equation}
+R^{\rho}_{\,\, \sigma \mu \nu}=\partial_{\mu} \Gamma^{\rho}_{\,\, \nu \sigma}-\partial_{\nu} \Gamma^{\rho}_{\,\, \mu \sigma}+\Gamma^{\rho}_{\,\, \mu \lambda}\Gamma^{\lambda}_{\,\, \nu \sigma}-\Gamma^{\rho}_{\,\, \nu \lambda}\Gamma^{\lambda}_{\,\, \mu \sigma}
+\end{equation}
+\vskip1ex
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=13cm]{VectBundle.jpg}
+\caption{A complex vector bundle over a base space $M$.  Each fiber is a copy of some vector space $\mathbb{V}$ and the connection $A_{\mu}(x)$ (which is now a matrix) tells us how nearby fibers differ, in some sense.  A vector field can be thought of as a section of the bundle, pictured in red.}
+\label{fig:nonfloat2}
+\end{center}
+\end{figure}
+\vskip1ex
+
+
+
+
+\vskip2ex
+\section{The Polyakov Path Integral}
+\vskip2ex
+
+
+
+
+
+
+\vskip2ex
+\subsection{A Sum over Topologies and an Integral over Geometries}
+\vskip2ex
+
+A freely propagating open string worldsheet has the topology of an infinite strip while a freely propagating closed string worldsheet has the topology of a cylinder.  However, a free theory is relatively boring so we would like to add interactions to the picture.  It turns out that the only consistent way for strings to interact is by splitting and joining.  That is to say, a string can split into two strings or two strings can coalesce into one.  This spans all possible interactions.  It is clear then that interactions change the topology of the worldsheet.  This is a crucial point.  
+\vskip1ex
+\begin{center}
+\emph{Interactions do not change the local structure of the worldsheet.  Rather, the interaction is encoded into the global worldsheet topology.}  
+\end{center}
+\vskip1ex
+This is in stark contrast to what happens in quantum field theory where interactions necessarily occur at points which drastically change the topology of the Feynman diagram.  The fact that this doesn't occur in string theory is one of the main reasons why many of the infinities that plague quantum field theory disappear.  
+\vskip1ex
+In the spirit of quantum field theory, we define an amplitude in string theory between two initial and final states to be the ``sum" over all paths connecting the two states that are consistent with a given theory.  Computing such amplitudes will require a generating functional $Z$.  Since interactions change the topology of the worldsheet, $Z$ must involve a sum over topologies.  
+\vskip1ex
+However, what about geometry?  Recall that geometry differs from topology in that it depends on embeddings and metrics on a given topology.  We also need to integrate over all embeddings $X^{\mu}(\sigma)$ of the worldsheet into spacetime.  In addition, we must integrate over all metrics $g_{\mu \nu}(\sigma)$ on the worldsheet.  
+\vskip1ex
+This gives a promising candidate for the partition function,
+\vskip1ex
+
+\begin{equation}\label{partfunc}
+Z \sim \sum_{\text{topologies}} \frac{1}{\text{Vol}}\int \mathcal{D}g \mathcal{D}X e^{-S},
+\end{equation}
+\vskip1ex
+
+where $S$ is the Polyakov action, given by,
+\vskip1ex
+\begin{equation}
+\begin{split}
+& S=S_{X}+ \lambda \cdot \chi, \\
+&S_{X}=\frac{1}{4 \pi \alpha'}\int_{M} d^{2} \sigma g^{1/2}g^{ab} \partial_{a}X^{\mu}\partial_{b}X_{\mu}, \\
+& \chi =\frac{1}{4 \pi} \int_{M} d^{2} \sigma g^{1/2} R + \frac{1}{2 \pi} \int_{\partial M} ds \, k.
+\end{split}
+\end{equation}
+\vskip1ex
+
+The factor $1/\text{Vol}$ is present for reasons we'll discuss in the next section and $\chi$ is simply the Euler characteristic, generalized to manifolds with boundary.  It is a topological invariant; that is to say, it is independent of the metric.  For a plane with $p$ punctures, the Euler characteristic is $\chi=2-p$.  For a sphere with $p$ punctures (holes) and $g$ handles, the Euler Characteristic is $\chi=2-p-2g$.  
+\vskip1ex
+There is a nice intuitive way of visualizing why adding a handle decreases $\chi$ by two whereas adding a hole merely decreases $\chi$ by one.  Imagine all we knew about were holes and we had the formula $\chi=2-p$.  To create a handle, you need to create \emph{two} holes and then stretch them out and glue them together.  Therefore, constructing one handle is essentially equivalent to constructing two holes.  
+\vskip1ex
+Each time an open string splits into two and then coalesces back into one, the Euler characteristic decreases by one, since this essentially is just adding a hole.  Thus, this process weights our partition function $Z$ by $e^{\lambda}$.  Since this factors in both the emitting \emph{and} reabsorbing of an open string, the amplitude for simply emitting an open string is $e^{\lambda/2}$.  
+\vskip1ex
+Likewise, for a given diagram, emitting and reabsorbing a closed string simply corresponds to adding a handle.  This decreases the Euler characteristic by 2 which multiplies $Z$ by the factor of $e^{2\lambda}$.  Therefore, the amplitude for simply emitting a closed string is given by $e^{\lambda}$.  It is therefore, the Euler characteristic term in the action which determines the coupling constants in the string theory,
+\vskip1ex
+\begin{equation}
+g_{o}^{2} \sim g_{c} \sim e^{\lambda}.
+\end{equation}
+\vskip1ex
+One other important point to mention is that exactly which topologies belong in the sum (\ref{partfunc}) depends on the theory in question.  For example, it is possible to have a theory with just closed strings but it is not possible to have a theory with just open strings.  That is to say, closed strings can always be produced by scattering open strings.  There is an elegant geometric way to prove this: 
+\vskip1ex
+Imagine two open strings joining at an interaction point $P$.  Locally around $P$, this is indistinguishable from the two endpoint of the same open string coalescing to form a closed string.  Thus, any attempt to forbid such a production of closed strings would require a non-local constraint on the action.  This assuredly cannot happen; therefore if we allow open string joining and splitting, then we must also allow for the production of closed strings.  This argument has a startling punchline:
+\vskip1ex
+
+\begin{center}
+\emph{String theory necessarily includes gravity!  That is to say a closed string representing a spin-2 graviton must be present in string theory.}
+\end{center}
+\vskip1ex
+So where does this logic break down in trying to prove that closed string theories necessarily require open strings?  Well, when closed strings join or split, the interaction point looks locally like an ``$X$."  This is certainly not crying out for open strings to be included.  
+\vskip1ex
+Given that we also have to take oriented vs. unoriented worldsheets into account, we have a total of four free string theories:
+\vskip1ex
+
+\begin{itemize}
+
+\item Closed-Oriented: a sum over all oriented worldsheets without boundary.
+\vskip1ex
+\item Closed-Unoriented: a sum over all worldsheets without boundary.
+\vskip1ex
+\item Closed-Open oriented: a sum over all oriented worldsheets with any number of boundaries.
+\vskip1ex
+\item Closed-Open unoriented: a sum over all worldsheets with any number of boundaries.
+\end{itemize}
+\vskip1ex
+
+Finally, we should emphasize a few magical points about string theory which differ from quantum field theory.  In quantum field theory, we pick which particles are present in the theory and represent these particles by lines in a Feynman diagram.  In addition, we must also choose how the particles interact; that is to say we choose which interaction vertices we will include in the action.  Finally, we also choose the spacetime dimension of the theory as well as the symmetries present in the theory.  This differs substantially from the string theory picture:
+\vskip1ex
+
+\begin{center}
+\emph{Once we choose which particles (open/closed strings) to include in the theory as we've done above, string theory forces a certain spacetime dimension on us.  Furthermore, as remarked earlier, we do not have to choose vertices because the interaction is not a local process, but rather encoded in the global topology of the worldsheet.  Thus, string theory is already much less arbitrary than quantum field theory.}
+\end{center}
+\vskip2ex
+
+
+\section{The Fadeev-Popov Method in Gauge Theories}
+\vskip2ex
+
+Before getting to the Polyakov path integral specifically, we will discuss the Fadeev-Popov method in some amount of generality as it applies to Yang-Mills theory.  As above, we will try to provide some geometric intuition
+
+\vskip2ex
+\subsection{Some Mathematical Preliminaries}
+\vskip2ex
+\begin{defn}
+Let $G$ be a group.  We define a group action on a space of fields as $(\phi_{1}, \ldots, \phi_{n}) \longrightarrow (\xi \phi_{1}, \ldots, \xi \phi_{n})$ for all $\xi \in G$.  
+\end{defn}
+\vskip1ex
+
+\begin{defn}
+For a given point $(\phi_{1}, \ldots, \phi_{n})$ in the field space, we define the orbit of that point under the group action to be the set,
+\vskip1ex
+\begin{equation}
+\mathcal{O}\big((\phi_{1}, \ldots, \phi_{n})\big)=\bigg\{(\xi \phi_{1}, \ldots, \xi \phi_{n}) \, \big| \, \xi \in G\bigg\}.
+\end{equation}
+In other words, the orbit of a given point $P$ consists of all other points that the group action ``flows" the point $P$ to.  For physics application, we will usually refer to these orbits as ``gauge orbits."
+\end{defn}
+\vskip1ex
+
+The motivation for these definitions is that if $G$ is the symmetry group of some system, then the action, as well as the path integral measure, will be invariant as we flow along the gauge orbits.  Therefore, any two points in the same orbit represent the exact same physical state.  Furthermore, the group action partitions the space in the following sense,
+\vskip1ex
+
+\begin{proppy}
+Given a group $G$ acting on a field space given by configurations $(\phi_{1}, \ldots, \phi_{n})$, the collection of orbits forms a partition of the field space.  That is to say, the union of all the orbits covers the space once, and exactly once.  Orbits do not intersect and they do not miss any points.  
+\end{proppy}
+\vskip1ex
+
+In the path integral,
+\vskip1ex
+\begin{equation}\label{pint}
+I=\int \mathcal{D} \phi_{1} \cdots \mathcal{D} \phi_{n} \, e^{-S(\phi_{1}, \ldots, \phi_{n})/\hbar},
+\end{equation}
+\vskip1ex
+we are integrating over way too many states; we have a large redundancy due to our symmetry.  We need to find a way to factor out the integral over the orbits themselves, and instead integrate over a path where each orbit contributes once and only once.  This is the method of Fadeev and Popov which we describe in detail below.  The way to interpret ``factoring out the redundancy" geometrically, is by fixing a path through field space that intersects each orbit once and only once.    
+\vskip1ex
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=12cm]{GaugeSlice.jpg}
+\caption{Within the field space, the group action partitions the space into gauge orbits.  Fixing a gauge slice requires choosing a path which intersects each orbit once and only once.}
+\label{fig:nonfloat}
+\end{center}
+\end{figure}
+
+\vskip2ex
+
+
+
+
+\subsection{Factoring Out the Redundancy}
+\vskip2ex
+
+Assume we want to compute the path integral $I$ given above in (\ref{pint}), with underlying symmetry group $G$.  Therefore, both the measure and the action must be invariant upon action by $G$: $\mathcal{D}\phi_{i}= \mathcal{D}(\xi \phi_{i})$ and $S(\phi_{1}, \ldots, \phi_{n})=S(\xi \phi_{1}, \ldots, \xi \phi_{n})$ for all $\xi \in G$.  There is a subtlety where the measure and the integrand may be invariant as a \emph{product} yet not separately invariant, but we will not worry about this.  
+\vskip1ex
+We define the Fadeev-Popov determinant by the following,
+\vskip1ex
+
+\begin{equation}\label{idd}
+1=\Delta(\phi_{i}) \int d\xi \delta \big[ f(\xi \phi_{i})\big].
+\end{equation}
+\vskip1ex
+{\color{blue} Give intuition for what this means.}
+\vskip1ex
+We can show that the Fadeev-Popov determinant is gauge invariant as follows,
+\vskip1ex
+
+\begin{equation}
+\big[\Delta(\xi' \phi_{i})\big]^{-1}=\int d\xi \delta\big[f(\xi \xi' \phi_{i})\big]= \int d\xi''\delta \big[f(\xi'' \phi_{i})\big]=\big[\Delta(\phi_{i})\big]^{-1},
+\end{equation}
+\vskip1ex
+where we've defined $\xi'' \equiv \xi \xi'$ and used that the standard Haar measure for group integration is invariant under left or right multiplication, i.e. $d(\xi \xi')=d\xi$.  This establishes that the Fadeev-Popov determinant is invariant as the group action flows along the gauge orbits.  
+\vskip1ex
+The idea now is that we insert the identity in (\ref{idd}) into the expression for our path integral $I$.  
+\vskip1ex
+\begin{equation}
+I=\int \mathcal{D} \phi_{1} \ldots \mathcal{D}\phi_{n} \Delta(\phi_{i}) \int d\xi \delta \big[f(\xi \phi_{i})\big]e^{iS(\phi_{i}, \ldots, \phi_{n})/\hbar}.
+\end{equation}
+\vskip1ex
+We now multiply all fields $\phi_{i}$ on the left by $\xi^{-1}$ and in doing so, we note that $\mathcal{D} \phi_{i}$, $\Delta(\phi_{i})$, and $S(\phi_{i})$ are gauge invariant.  Therefore, there is no longer any dependence on the group in the integrand.  So we have achieved our goal of factoring out the integral over the symmetry group, which we express as,
+\vskip1ex
+\begin{equation}
+I=\bigg(\int d\xi \bigg) \int \mathcal{D} \phi_{1} \ldots \mathcal{D}\phi_{n} \Delta(\phi_{i}) \delta \big[f(\phi_{i})\big]e^{iS(\phi_{i}, \ldots, \phi_{n})/\hbar}.
+\end{equation}
+\vskip1ex
+Now, there is a subtlety we need to touch on quickly.  If our symmetry group is a \emph{global} symmetry group, then $\int d\xi$ simply gives the volume of the group, assuming it's compact, of course.  We will see that this is the case for the ``gauge invariance" on the string worldsheet.  However, in the case of most gauge theories, the group represents \emph{local} symmetry transformations.  Thus, there will be a copy of the group at each fiber above the manifold.  This gives an infinite volume, even when the group is compact.  We will not worry too much about this case.  
+
+
+
+
+
+
+\vskip2ex
+\subsection{Gauge Fixing and the Fadeev-Popov Method}
+\vskip2ex
+
+In the Polyakov path integral (\ref{partfunc}), disregarding the sum over topologies for now, the factor of $1/\text{Vol}$ is present because when integrating over metrics and embeddings, we're significantly over-counting.  We want to integrate over only physically distinct configurations.  However, we know the Polyakov action has diffeomorphism and Weyl gauge symmetry and thus, we do not want to integrate over two configurations related by such transformations.  
+\vskip1ex
+When we refer to ``diffeomorphism and Weyl gauge symmetry" we should keep in mind that this is not any real gauge symmetry, in the sense of Yang-Mills theory.  There is no actual gauge Lie group which acts on configurations to send them to physically equivalent configurations.  Rather, the gauge symmetry in this case simply refers to a redundancy in our description of the theory.  Despite this subtlety, the illustration in an earlier section about gauge orbits is still helpful here.  
+\vskip1ex
+
+Given our two symmetries let us denote both of these by $\xi$; you can think of this as a coordinate along one of the gauge orbits if you like.  Therefore, under a general gauge transformation, we have the metric changes by,
+\vskip1ex
+
+\begin{equation}
+g_{\alpha \beta}(\sigma) \to g^{\xi}_{\alpha \beta}(\sigma ')=e^{2 \omega(\sigma)}\frac{\partial \sigma^{\gamma}}{\partial \sigma'^{\alpha}}\frac{\partial \sigma^{\delta}}{\partial \sigma'^{\beta}}g_{\gamma \delta}(\sigma).
+\end{equation}
+\vskip1ex
+
+In two dimensions, the metric has three independent components.  This happens to coincide with our three gauge freedoms here: one for Weyl, and two for diffeomorphism invariance in the two dimensions of the worldsheet.  This allows us to \emph{locally} fix the metric to whatever we like, usually the flat metric.  We call this the fiducial metric $\hat{g}$.  
+\vskip1ex
+We can then write the fully gauge-fixed path integral as,
+\vskip1ex
+\begin{equation}
+Z[\hat{g}]= \int \mathcal{D} X \Delta_{\text{FP}}[\hat{g}]e^{-S_{\text{Poly}[X, \hat{g}]}},
+\end{equation}
+\vskip1ex
+where we think of the Fadeev-Popov determinant as the Jacobian needed for integrating a function over a sub-manifold.  However, we still need to actually compute $\Delta_{\text{FP}}[\hat{g}]$.  We want to look at infinitesimal gauge transformations $\xi$ which means that we can approximate the delta function $\delta(g-\hat{g}^{\xi})$ as $\delta(\hat{g}-\hat{g}^{\xi})$.  We then have that,
+\vskip1ex
+
+\begin{equation}
+\hat{g}^{\xi}= \hat{g}+ \delta \hat{g} \implies \delta(\hat{g}-\hat{g}^{\xi})= \delta( \delta \hat{g}),
+\end{equation}
+\vskip1ex
+where the transformation in the matrix under and infinitesimal Weyl transformation generated by $\omega$ and a diffeomorphism generated by $v^{\alpha}$ is given by,
+\vskip1ex
+
+\begin{equation}
+\delta \hat{g}_{\alpha \beta}=2 \omega \hat{g}_{\alpha \beta}+ \nabla_{\alpha} v_{\beta}+ \nabla_{\beta}v_{\alpha}.
+\end{equation}
+\vskip1ex
+
+Therefore, the defining form of the Fadeev-Popov determinant for this theory is,
+\vskip1ex
+
+\begin{equation}
+\Delta^{-1}_{\text{FP}}[\hat{g}]=\int \mathcal{D}\omega \mathcal{D} v \delta(2 \omega \hat{g}_{\alpha \beta} + \nabla_{\alpha}v_{\beta}+ \nabla_{\beta} v_{\alpha}).
+\end{equation}
+\vskip1ex
+It's key to notice here that since we're infinitesimally close to the identity, we can replace the integral over the group to an integral over the Lie Algebra generated by $\omega$ and $v$.  
+\vskip1ex
+
+It's helpful to represent the delta function in the integrand in its Fourier form.  We have, 
+\vskip1ex
+
+\begin{equation}
+\delta(2 \omega \hat{g}_{\alpha \beta} + \nabla_{\alpha}v_{\beta}+ \nabla_{\beta} v_{\alpha})=\int \mathcal{D} \beta e^{2 \pi i \int d^{2}\sigma \sqrt{\hat{g}} \beta^{\alpha \gamma}\big[2 \omega \hat{g}_{\alpha \gamma}+ \nabla_{\alpha}v_{\gamma} + \nabla_{\gamma} v_{\alpha}\big]}.
+\end{equation}
+\vskip1ex
+
+It is clear that our parameter $\beta$ must be a two index object since it is conjugate to the two index object $2 \omega \hat{g}_{\alpha \gamma} + \nabla_{\alpha}v_{\gamma}+ \nabla_{\gamma} v_{\alpha}$.  Furthermore, it should also be clear that $\beta$ is a symmetric tensor on the worldsheet.  
+\vskip1ex
+
+We can first perform the integration over $\omega$ which will force $\beta$ to be symmetric,
+\vskip1ex
+\begin{equation}
+\int \mathcal{D} \omega e^{4 \pi i \int d^{2} \sigma \sqrt{\hat{g}} \hat{g}_{\alpha \gamma}\beta^{\alpha \gamma} \omega} \sim \delta(\hat{g}_{\alpha \gamma}\beta^{\alpha \gamma})
+\end{equation}
+\vskip1ex
+In other words, the path integral over $\omega$ essentially yields the constraint $\hat{g}_{\alpha \gamma}\beta^{\alpha \gamma}=0$.  What we're left with is simply the inverse Fadeev-Popov determinant:
+\vskip1ex
+
+\begin{equation}
+\Delta_{\text{FP}}^{-1}[\hat{g}]= \int \mathcal{D} v \mathcal{D} \beta e^{4 \pi i \int d^{2} \sigma \sqrt{\hat{g}} \beta^{\alpha \gamma} \nabla_{\alpha} v_{\gamma}}.
+\end{equation}
+\vskip1ex
+
+So we have a nice expression for the inverse of the Fadeev-Popov determinant, but how do we invert this expression to get $\Delta_{\text{FP}}$?  It is a well-known result that we can invert the determinant by replacing our commuting fields $\beta$ and $v$ by anti-commuting Grassmann variables $b_{\alpha \gamma}$ and $c^{\alpha}$, respectively.  The fields $b$ and $c$ are known as \emph{ghost fields}.  This allows us to write down the ultimate expression for the Fadeev-Popov determinant,
+\vskip1ex
+
+\begin{equation}
+\Delta_{\text{FP}}[\hat{g}]=\int \mathcal{D}b \mathcal{D} c \,  e^{i S_{\text{ghost}}}, \,\,\,\,\,\,\, \text{where} \,\,\,\,\,\,S_{\text{ghost}}= \frac{1}{2 \pi} \int d^{2} \sigma \sqrt{\hat{g}} \, b_{\alpha \beta} \nabla^{\alpha}c^{\beta}.
+\end{equation}
+\vskip1ex
+
+We can Wick rotate back to Euclidean space to get rid of the $i$.  We can write the full partition function as,
+\vskip1ex
+
+\begin{equation}
+Z[\hat{g}]= \int \mathcal{D} X \mathcal{D} b \mathcal{D} c \, e^{-S_{\text{Poly}}[X,\hat{g}]-S_{\text{ghost}}[b,c,\hat{g}]}.
+\end{equation}
+\vskip1ex
+
+This is quite outstanding.  The gauge redundancy has disappeared at the expense of two Grassmann ghost fields introduced into our theory.  The ghost fields appear on the same level as the embedding functions $X$ in the path integral.  The intuition to be applied here is that the ghost fields contribute ``negative degrees of freedom" exactly such that they cancel the unphysical gauge degrees of freedom in the original path integral.  We will make precise this notion of ``negative degrees of freedom" when we talk about central charges.  
+\vskip1ex
+
+We can analyze the ghost action in conformal gauge $\hat{g}_{\alpha \beta}= e^{2 \omega} \delta_{\alpha \beta}$ which gives a determinant of $\sqrt{\hat{g}}=e^{2 \omega}$.  We note that the metric allows us to raise and lower indices on the covariant derivatives,
+\vskip1ex
+
+\begin{equation}
+\begin{split}
+& \nabla^{z}=g^{z \bar{z}}\nabla_{\bar{z}}=2e^{-2 \omega} \nabla_{\bar{z}} \\
+&\nabla^{\bar{z}}=g^{z \bar{z}}\nabla_{z}=2e^{-2 \omega} \nabla_{z}
+\end{split}
+\end{equation}
+\vskip1ex
+
+Recalling $d^{2} \sigma = \frac{1}{2} d^{2}z$, we can simplify the ghost action as,
+\vskip1ex
+
+\begin{equation}
+S_{\text{ghost}}= \frac{1}{2 \pi} \int d^{2} \sigma \sqrt{\hat{g}} \, b_{\alpha \beta} \nabla^{\alpha}c^{\beta}=\frac{1}{2 \pi} \int d^{2} z \big(b_{zz} \nabla_{\bar{z}}c^{z} + b_{\bar{z} \bar{z}} \nabla_{z} c^{\bar{z}}\big).
+\end{equation}
+\vskip1ex
+
+However, we can show that the connections actually vanish such that the covariant derivative is merely a partial derivative: $\nabla_{z} = \partial$ and $\nabla_{\bar{z}} = \bar{\partial}$.  Thus, our final expression for the ghost action is,
+\vskip1ex
+
+\begin{equation}
+S_{\text{ghost}}=\frac{1}{2 \pi} \int d^{2} \big(b \bar{\partial c} + \bar{b} \partial \bar{c}\big).
+\end{equation}
+\vskip1ex
+We see that our ghost action simply consists of two de-coupled free field theories.  Furthermore, the metric never appears in our final expression which implies that the theory is conformally invariant.  Therefore, we now realize our ghost theory as a conformal field theory on the string worldsheet.
+\vskip2ex
+
+\subsection{The Ghost Conformal Field Theory}
+\vskip2ex
+
+We begin by recalling that by definition, the central charge $c$ is such that $c/2$ is the coefficient of $(z-w)^{-4}$ in the $T(z)T(w)$ OPE.  In the bc-Ghost CFT, the energy-momentum tensor is given by,
+\vskip1ex
+\begin{equation}
+T(z)=2 \normord{\partial c(z) b(z)} + \normord{c(z) \partial b(z)}.
+\end{equation}
+\vskip1ex
+
+We need to know the relevant basic OPEs between the anti-commuting $b$ and $c$ ghost fields, which we lay out below.
+\vskip1ex
+
+\begin{equation}
+b(z)c(w)=\frac{1}{z-w}  \,\,\,\,\,\,\, c(w)b(z)=-\frac{1}{z-w},
+\end{equation}
+\vskip1ex
+
+\begin{equation}
+\partial b(z) c(w) = -\frac{1}{(z-w)^{2}} \,\,\,\,\,\,\,\,\, \partial c(w) b(z) = - \frac{1}{(z-w)^{2}},
+\end{equation}
+\vskip1ex
+
+\begin{equation}
+\partial b(z) \partial c(w) = -\frac{2}{(z-w)^{3}} \,\,\,\,\,\,\,\,\,\, \partial c(w) \partial b(z) = \frac{2}{(z-w)^{3}}.
+\end{equation}
+\vskip1ex
+
+There is no point in showing the grunt work of this whole computation but rather we will simply state the result, which is pleasing.  Since we care only about the central charge, we want to look at the coefficient of $(z-w)^{-4}$ in the OPE.  After taking all of the contractions, we find that,
+\vskip1ex
+
+\begin{equation}
+T(z)T(w)= -\frac{1}{(z-w)^{4}}\big(4+4+4+1\big) + \ldots = \frac{-13}{(z-w)^{4}}+\ldots.
+\end{equation}
+\vskip1ex
+
+Therefore, (accounting for the 1/2 in the definition) the central charge is given by $c=-26$.  The central charge in some sense measures the degrees of freedom of the CFT.  It should come not as a surprise that $c$ is negative here since the ghost fields are not physical.  
+\vskip1ex
+However, the Weyl symmetry is anomalous unless $c=0$.  Since the Weyl symmetry is a gauge symmetry, we want to keep it around.  So we must add a CFT with central charge $c=+26$ to the string worldsheet to cancel the effects of the ghosts.  We usually do this by appending 26 scalar fields $X^{\mu}$ but there are other ways to do this.  Perhaps we could only add 4 scalar fields.  Then we have $c=22$ that we need to account for.  We can refer to this as the ``internal sector" of the string and imagine appending a 22-dimensional fibre bundle over 4-dimensional Minkowski space.
+
+\vskip2ex
+
+
+\subsection{The Weyl Anomoly}
+\vskip2ex
+$c>0$ for all unitary CFTs so this establishes that the ghost CFTs aren't unitary.  A further reason why they're not physical.  
+\vskip1ex
+
+We have the following informal description of a ``quantum anomaly,"
+\vskip1ex
+
+\begin{center}
+\emph{A quantum anomaly is a symmetry (or more generally, a property) of a classical theory which fails to hold upon quantization.}
+\end{center}
+\vskip1ex
+
+It is a well known property of all conformal field theories in 2-dimensions that the trace of the energy-momentum tensor vanishes $T^{\alpha}_{\,\,\, \alpha}=0$.  In the complex worldsheet coordinates, this is expressed as $T_{z \bar{z}}=0$.  However, upon quantization, it is not necessarily true that $\langle  T^{\alpha}_{\,\,\, \alpha} \rangle=0$.  This will indeed hold when embedding the string into a flat background, but will not hold for a general curved background.  This is known as the \emph{Weyl Anomaly}.  
+\vskip1ex
+Given a CFT with central charge $c$ on a string worldsheet with scalar curvature $R$, the expectation value of the energy-momentum tensor satisfies,
+\vskip1ex
+\begin{equation}\label{WeylAnom}
+\langle  T^{\alpha}_{\,\,\, \alpha} \rangle=-\frac{c}{12} R
+\end{equation}
+\vskip1ex
+If we're considering a theory where the metric is somehow fixed, then the above relation merely relates the expectation value of the energy-momentum tensor to the curvature.  If, however, we're considering a theory where the metric is dynamical (i.e. where we have a path integral $\int \mathcal{D}g_{\mu \nu}$) then we don't have a well-defined expectation value $\langle  T^{\alpha}_{\,\,\, \alpha} \rangle$.  This is certainly problematic.  
+\vskip1ex
+The problem lies in the fact that $R$ is not conformally invariant.  We've seen that we have enough freedom to put the metric into the form $g_{\alpha \beta}= e^{2 \omega} \delta_{\alpha \beta}$.  In these coordinates, the scalar curvature is given as $R=-2e^{-2 \omega}\partial^{2} \omega$.  Clearly, $R$ depends on $\omega$, which establishes that it is not conformally invariant.  
+\vskip1ex
+We therefore have some observable $\langle  T^{\alpha}_{\,\,\, \alpha} \rangle$ which takes different values on different geometries related by a conformal transformation.  This contradicts the fact that we're working with a CFT.  
+\vskip1ex
+
+To go about proving (\ref{WeylAnom}), we need to compute the $T_{z \bar{z}} T_{w \bar{w}}$ OPE.  Remember that $T_{z \bar{z}}$ vanishes in the classical theory but as we discussed above, we need to be careful in the quantum theory.  As always in CFT, there is an implied expectation value.  Certainly the energy-momentum tensor is a conserved current,
+\vskip1ex
+\begin{equation}
+\partial^{\alpha} T_{\alpha \bar{z}}= \partial T_{z \bar{z}} + \bar{\partial} T_{\bar{z} \bar{z}}=g^{z \bar{z}} \partial_{\bar{z}}T_{zz}+ g^{z \bar{z}}\partial_{z} T_{z \bar{z}}=0.
+\end{equation}
+\vskip1ex
+This allows us to conclude that $\partial T_{z \bar{z}}= -\bar{\partial} T_{zz}$, as a consequence of energy conservation.  We can then use this to write the $T_{z \bar{z}} T_{w \bar{w}}$ OPE in terms of the more familiar $T_{zz} T_{ww}$ OPE,
+\vskip1ex
+
+\begin{equation}
+\partial_{z}T_{z \bar{z}} \partial_{w} T_{w \bar{w}}= \bar{\partial}_{z} T_{zz} \bar{\partial}_{w} T_{ww}= \bar{\partial}_{z} \bar{\partial}_{w}\bigg(\frac{c/2}{(z-w)^{4}}+ \ldots\bigg)
+\end{equation}
+\vskip1ex
+We may be tempted to conclude that the right hand side must vanish, however we need to account for the singularity as $z \to w$.  This hints that the derivative will result in a delta function.  Indeed, we see that,
+\vskip1ex
+
+
+\vskip1ex
+Let us assume that in a flat background $\langle  T^{\alpha}_{\,\,\, \alpha} \rangle=0$.  We will then looks at conformal deformations $\delta g^{\beta \gamma}=-2 \omega \delta^{\beta \gamma}$ and study $\delta \langle  T^{\alpha}_{\,\,\, \alpha} \rangle$.  We see that,
+\vskip1ex
+
+\begin{equation}
+\begin{split}
+\delta \langle  T^{\alpha}_{\,\,\, \alpha} \rangle & = \frac{1}{4 \pi} \int \mathcal{D} \phi e^{-S}T^{\alpha}_{\,\,\, \alpha}(\sigma) \int d^{2}\sigma' \sqrt{g} \delta g^{\beta \gamma} T_{\beta \gamma}(\sigma') \\
+&=-\frac{1}{2\pi} \int \mathcal{D} \phi e^{-S} \int d^{2} \sigma' \omega(\sigma') T^{\alpha}_{\,\,\, \alpha}(\sigma)T^{\beta}_{\,\,\, \beta}(\sigma')
+\end{split}
+\end{equation}
+\vskip1ex
+
+We can show that $T^{\alpha}_{\,\,\, \alpha}(\sigma)T^{\beta}_{\,\,\, \beta}(\sigma')=16 T_{z \bar{z}} T_{w \bar{w}}$ and we recall $8 \partial_{z} \bar{\partial}_{w} \delta(z-w, \bar{z}-\bar{w})=-\partial^{2} \delta(\sigma-\sigma')$.  This allows us to conclude that,
+\vskip1ex
+\begin{equation}
+T^{\alpha}_{\,\,\, \alpha}(\sigma)T^{\beta}_{\,\,\, \beta}(\sigma')=-\frac{c \pi}{3} \partial^{2} \delta(\sigma-\sigma')
+\end{equation}
+\vskip1ex
+
+We can plug this into the above equation and we clearly integrate by parts twice to get the derivative off the delta function.  This then eliminates the integral altogether.  When the smoke clears we see that,
+\vskip1ex
+\begin{equation}
+\delta \langle T^{\alpha}_{\,\,\, \alpha} \rangle = \frac{c}{6} \partial^{2} \omega
+\end{equation}
+\vskip1ex
+Recalling the relation $R=-2 e^{-2 \omega} \partial^{2} \omega$, and letting $e^{-2 \omega} \approx 1$ since we're dealing with infinitesimal transformations, we recover the final answer we desired,
+\vskip1ex
+\begin{equation}
+\langle T^{\alpha}_{\,\,\, \alpha} \rangle = -\frac{c}{12} R
+\end{equation}
+\vskip1ex
+So what is this telling us?  When we're working with dynamical metrics (as is the case in the Polyakov path integral) we need $\langle T^{\alpha}_{\,\,\, \alpha} \rangle =0$.  Clearly we then require $c=0$.  But we can show using basic CFT that $c \geq 0$ for all unitary theories.  The inequality is only saturated in the trivial vacuum state.  However, the saving grace comes in the form of ghosts which must have $c<0$.  These are unphysical degrees of freedom, which we can see by considering that they must be non-unitary.  These ghosts precisely cancel the physical degrees of freedom leaving us with a CFT where $c=0$.   
+\vskip2ex
+
+\section{Riemann Surfaces and Moduli Spaces}
+\vskip2ex
+
+It is not at all an exaggeration to say that the most fundamental object of study in perturbative string theory is a Riemann surface.  This is simply because the string worldsheet will turn out to be a Riemann surface.  In particular, for the case of closed strings, a classification theorem will tell us exactly how to carry out a perturbative expansion as a sum over Riemann surfaces of different genus.  Upon digging a little deeper, we will find that perhaps the Riemann surface itself \emph{isn't} the most fundamental object in the theory, but rather an object we know more about, namely the moduli space of the Riemann surface.  This gives us ample reason to discuss the mathematics of these objects before delving into the physics.  
+\vskip1ex
+
+
+\subsection{The Geometry of Riemann Surfaces}
+\vskip2ex
+
+A Riemann surface is simply a one-dimensional complex manifold.  That is to say, it is a complex curve.  It everywhere looks locally like $\mathbb{C}$.  Essentially, we cover the space by charts such that the transition functions are holomorphic in their domain of definition.  Equivalently, their real and imaginary parts must satisfy the Cauchy-Riemann equations.  Let's make this slightly more formal:
+\vskip1ex
+\begin{defn}
+$M$ is a Riemann surface if the following conditions hold,
+\vskip1ex
+
+(i) $M$ is a topological space which is locally homeomorphic to $\mathbb{R}^{2}$.
+\vskip1ex
+(ii) There exists a cover of $M$ by charts $(U_{i}, \phi_{i})$ such that the map $\phi_{i}$ is a homeomorphism from $U_{i}$ to an open subset of $\mathbb{C}$.  
+\vskip1ex
+(iii) Given overlapping charts $U_{i}$ and $U_{j}$ such that $U_{i} \cap U_{j} \neq 0$, then the map $\Phi_{ij}=\phi_{j} \circ \phi_{i}^{-1}$ from $\phi_{i}(U_{i} \cap U_{j})$ to $\phi_{j}(U_{i} \cap U_{j})$ is holomorphic, in the sense of ordinary calculus.  In other words, the transition functions are holomorphic.  
+\end{defn}
+\vskip1ex
+
+We can picture it spatially, as a two-dimensional real manifold.  But we must be careful with this because it's complex (holomorphic) structure is a necessary ingredient which may get lost in this interpretation.  
+\vskip1ex
+This begs the questions: given a two-dimensional real surface, can we equip it with complex structure to make it into a Riemann surface?  The following Proposition provides an answer:
+\vskip1ex
+\begin{proppy}
+A two-dimensional real manifold is a Riemann surface if and only if it is orientable and metrizable.  Recall that metrizable means that it is possible to endow the space with the metric topology.  
+\end{proppy}
+\vskip1ex
+However, the complex structure which advances the surface to a Riemann surface need not be unique.  
+\vskip1ex
+
+The following Theorem provides a classification of all compact, orientable, Riemann surfaces without boundary.  
+\vskip1ex
+\begin{thm}
+Let $M$ be a compact, orientable, Riemann surface without boundary.  Then $M$ is homeomorphic to either the sphere, the torus, or the $n$-holed torus.  More specifically, the topology of $M$ is determined completely by its genus, where the genus of the $n$-holed torus is $n$.  
+\end{thm}
+\vskip1ex
+
+
+
+Given the abundance of Riemann surfaces, we want to identify some of them as being equivalent.  This leads to the following definition,
+\vskip1ex
+\begin{defn}
+A biholomorphism is a map between Riemann surfaces $\psi: M \to \tilde{M}$ which is bijective, holomorphic, and has a holomorphic inverse.  Given such a map, we will identify the two Riemann surfaces $M$ and $\tilde{M}$ as biholomorphic. 
+\end{defn}
+\vskip1ex
+Note that some authors use the rather disturbing terminology ``conformal" instead of biholomorphic.  Regardless of what we call it, the above definition partitions the collection of Riemann surfaces into equivalence classes.  Let us now discuss a few examples.
+\vskip1ex
+
+
+\subsection{Biholomorphisms of the Open String Worldsheet}
+\vskip1ex
+
+Let us model the open string worldsheet as the infinite strip $\mathcal{I}$ with coordinates $w=\tau + i \sigma$ where $-\infty < \tau < \infty$ and $0< \sigma < L$.  In this picture, we think of the strings as the vertical slices at constant $\tau$.  Let us map $\mathcal{I}$ to the upper-half plane $\bar{\mathbb{H}}$ by the biholomorphism,
+\vskip1ex
+\begin{equation}
+z= \exp\bigg(\frac{ \pi w}{L}\bigg).
+\end{equation}
+\vskip1ex
+
+This mapping takes us from the $w$-plane (the infinite strip) to the $z$-plane in such a way that the strings are represented by semi-circles expanding outward from the origin.  The infinite past is mapped to the origin $z=0$ and the infinite future is mapped to the point at infinity $z=\infty$.  
+\vskip1ex
+
+There is one sense in which this picture isn't very nice.  Namely, the string in the infinite past is represented by a point, while the string in the infinite future is represented by an infinitely large semi-circle.  This is un-elegant, at best, so we postulate another biholomorphism which places the points on equal footing.  The mapping,
+\vskip1ex
+
+\begin{equation}
+\eta = \frac{1+iz}{1-iz},
+\end{equation}
+takes $\bar{\mathbb{H}}$ (minus the origin) to the unit disk in the $\eta$-plane.  Under this mapping, the string at the infinite past is mapped to $\eta = 1$ and the string at the infinite future is mapped to $\eta = -1$.  Now, the strings at the extremal times are on the same geometrical footing, as they should be.
+\vskip1ex
+However, the string never actually attains $t= \pm \infty$, which implies that $\eta = \pm 1$ doesn't really belong in the diagram.  This is certainly unavoidable; topologically, we have boundary punctures at $\eta = \pm 1$.  These two boundary punctures represent the two strings that are present in this string diagram and they form nice crevices for vertex operators to fill, as we'll see below.  
+\vskip1ex
+Once the smoke clears, we conclude that the infinite string $\mathcal{I}$ is biholomorphic to the unit disk, twice punctured on the boundary.  What we've described above is the following chain of biholomorphisms.  
+\vskip1ex
+
+\begin{equation}
+{\textbf{Infinite Strip} \longrightarrow \textbf{Half Plane, once punctured} \longrightarrow \textbf{Disk, twice punctured}}
+\end{equation}
+\vskip1ex
+
+As one might expect, when we consider closed strings instead of open strings, we get the following completely analogous chain,
+\vskip1ex
+
+\begin{equation}
+{\textbf{Infinite Cylinder} \longrightarrow \textbf{Plane, once punctured} \longrightarrow \textbf{Sphere, twice punctured}}
+\end{equation}
+\vskip1ex
+
+
+\subsection{Linear Fractional Transformations}
+\vskip1ex
+
+Clearly the Riemann sphere $\hat{\mathbb{C}}$ is biholomorphic to itself, but how many such biholomorphisms are there?  Consider two district Riemann spheres, one with coordinate $z$ and the other with coordinate $w$.  The most general biholomorphism between these two manifolds is what's called a linear fractional transformation, given by,
+\vskip1ex
+
+\begin{equation}
+w = \frac{az+b}{cz+d}, \,\,\,\,\,\,\,\,\, ad-bc=1, \,\,\,\,\,\,\,\,\,\, a,b,c,d \in \mathbb{C}
+\end{equation}
+\vskip1ex
+Such transformations are also commonly called ``Mobius Transformations."  They form a group called the Projective Special Linear Group $PSL(2, \mathbb{C})$.  The ``projective" part comes from the fact that we can scale $a,b,c,d$ by the same arbitrary value and not change the transformation.  
+\vskip1ex
+We can also consider biholomorphisms from $\bar{\mathbb{H}}$ to itself.  We expect these mapping to be similar to the Mobius transformations, but with some extra constraints.  Namely, the boundary of $\bar{\mathbb{H}}$, i.e. the real line, is special.  A biholomorphism is, in particular, a homeomorphism so the real line must be left invariant, since it's topologically distinguished.  One can show that a Mobius transformation acting on $\bar{\mathbb{H}}$ leaves the real line invariant if and only if $a,b,c,d$ are all real, except for an irrelevant common phase factor.  We therefore conclude that the group of biholomorphisms of the upper-half plane is $PSL(2, \mathbb{R})$.  
+\vskip1ex
+
+\subsection{A Couple of Examples}
+\vskip1ex
+
+Consider two distinct Riemann spheres with three punctures given by $z_{1}, z_{2}, z_{3}$ and $w_{1}, w_{2}, w_{3}$, respectively.  The three points on each sphere must be distinct.  We now ask, are these two surfaces biholomorphic?  In other words, can we construct a linear fractional transformation taking $z_{i} \to w_{i}$?  The answer is yes.  Such a map is given by,
+\vskip1ex
+\begin{equation} \label{3punc}
+\frac{z-z_{1}}{z-z_{2}}\frac{z_{3}-z_{2}}{z_{3}-z_{1}} = \frac{w-w_{1}}{w-w_{2}} \frac{w_{3}-w_{2}}{w_{3}-w_{1}}.
+\end{equation}
+\vskip1ex
+
+This may not look like a linear fractional transformation, but if one goes through the tedious algebra, it can be shown that it is.  Therefore, any two Riemann spheres with 3 punctures are biholomorphic.  
+\vskip1ex
+
+\begin{proppy}
+Equation (\ref{3punc}) is the unique linear fractional transformation that maps the three different points $z_{1}$, $z_{2}$, and $z_{3}$ into the three different points $w_{1}$, $w_{2}$, and $w_{3}$, respectively.  
+\end{proppy}
+\vskip1ex
+\begin{proof}
+We can carry out this proof without ever referencing the exact form of the map shown.  The idea is that we will show that there can \emph{only} be one map satisfying those conditions.  Since the one given above satisfies those conditions, it is the one.  
+\vskip1ex
+Let us assume there exists two maps $S,T: \hat{\mathbb{C}} \to \hat{\mathbb{C}}$ sending $z_{i} \to w_{i}$ for $i=1,2,3$.  Clearly, $S \circ T^{-1}(w_{i})=w_{i}$.  This holds for all three values of index $i$.  It's straightforward to show that a linear fractional transformation has at most two fixed points, unless it is the identity.  This proves that $S \circ T^{-1}=\mathbb{I}$ which implies that $S=T$.   
+\end{proof}
+\vskip1ex
+The result above has a very startling consequence.  Imagine taking two copies of $\hat{\mathbb{C}}$ with 4 punctures each, and attempting to build a biholomorphism between the two.  That is, we want to map $z_{i} \to w_{i}$ for $i=1,2,3,4$.  By the above proposition, since the first 3 punctures have to map to each other, our proposed biholomorphism \emph{must} be the one given in (\ref{3punc})!  We have no choice; it's the unique map.  However, there's no way that map will always send $z_{4}$ to $w_{4}$. 
+\vskip1ex
+Therefore, we see that Riemann spheres with 4 punctures are biholomorphically distinct.  It seems that there is an extra ``parameter" that tells us exactly where the point $z_{4}$ maps which distinguishes the surfaces.  This leads us perfectly into the idea of a Moduli Space.   
+\vskip2ex
+
+
+
+
+\subsection{The Moduli Space of a Riemann Surface}
+\vskip2ex
+We found above that when it comes to spheres punctured four times, there is a parameter which distinguishes between biholomorphically distinct surfaces.  It is precisely this parameter which comes into play when introducing the moduli space of a Riemann surface.  The informal way to think of a moduli space is as a ``space of parameters."  In other words, a space such that any point in the space determines uniquely a certain structure.  We make this more formal below.
+\vskip1ex
+\begin{defn}
+A homeomorphism class $\mathcal{C}$ of Riemann surfaces consists of all Riemann surfaces with the same topology.  Within each class $\mathcal{C}$, we can partition it by biholomorphism classes $\mathcal{B}$, i.e. classes where each element is biholomorphic to each other in the class.  
+\end{defn}
+\vskip1ex
+
+\begin{defn}
+Given a homeomorphism class $\mathcal{C}$ of Riemann surfaces, the moduli space $M$ is such that for all $m \in M$ we can associate a unique biholomorphism class $\mathcal{B}$ of $\mathcal{C}$.  
+\end{defn}
+\vskip2ex
+
+\subsection{Examples of Moduli Spaces}
+\vskip2ex
+
+\begin{itemize}
+\item What is the moduli space of circles in $\mathbb{R}^{2}$?  All circles in $\mathbb{R}^{2}$ are homeomorphic but they have different coordinates describing them within the ambient space.  How many parameters do we need to describe a circle?  Three; we need two to label the Cartesian coordinates of the center and another to label the radius.  The radius must be larger than zero.  Therefore, the moduli space $M_{c}$ is,
+\vskip1ex
+\begin{equation}
+M_{c}=\{ (x,y,z) \in \mathbb{R}^{3} | z>0 \}.
+\end{equation}
+\vskip1ex
+This is simply ``upper-half three space."  Each point in $M_{c}$ determines one and only one circle.  
+\vskip1ex
+
+\item What is the moduli space of a sphere with 3 punctures?  Well, since these are all biholomorphic to each other, there are no parameters needed.  Therefore, the moduli space is a point, representing the single object, up to biholomorphism.  
+\vskip1ex
+
+\item What is the moduli space of a sphere with 4 punctures?  It's pretty simple to reason through informally: the biholomorphism (\ref{3punc}) uniquely determines where 3 of the 4 punctures go and the final puncture can be placed anywhere other than where the 3 initial punctures already reside.  Therefore, the moduli space is itself a sphere with 3 punctures!  A point $P$ on this surface uniquely determines a sphere with 4 punctures; just place the 4th puncture at $P$.  
+\vskip1ex
+
+\item What is the moduli space of $\hat{\mathbb{H}}$ with three boundary punctures $P_{1}$, $P_{2}$, and $P_{3}$?  Unlike the case of the sphere, this is not quite just a point but very close.  It turns out in the case of $\hat{\mathbb{H}}$ with boundary punctures we must leave the cyclic ordering of $P_{1}$, $P_{2}$, and $P_{3}$ invariant under a biholomorphism.  In other words, placing the punctures in the order $(P_{1}, P_{2}, P_{3})$ is biholomorphic to the ordering $(P_{2}, P_{3}, P_{1})$ but it is not biholomorphic to the ordering $(P_{2}, P_{1}, P_{3})$.  Since there are two ways to cyclically order three objects, the moduli space here is actually two points!
+\vskip1ex
+
+\item What is the moduli space of $\hat{\mathbb{H}}$ with four boundary punctures $P_{1}$, $P_{2}$, $P_{3}$, and $P_{4}$?  It's standard to set $P_{1} \to 0$, $P_{3} \to 1$ and $P_{4} \to \infty$.  Then, since we have to preserve cyclic ordering, the fourth point $P_{2}$ can go anywhere between 0 and 1.  Accounting for the 6 different cyclic orderings of 4 points, we see that the moduli space is simply 6 disjoint copies of the open interval $(0,1)$.  
+\end{itemize}
+\vskip1ex
+
+
+The moral of the story is the following, even though we didn't fully justify it:
+\vskip1ex
+
+\begin{center}
+\emph{Quite simply, we often understand the moduli space of some structure better than we understand the structure itself.  This is certainly illustrated in the case of a sphere with 4 punctures.  It's a complicated object, but its moduli space is a sphere with 3 punctures, of which there is only one, up to biholomorphism.  As far as our application to string theory later, imagine being given a string worldsheet and conformally mapping it to the canonical form.  Thanks to some left over gauge symmetry, the amplitude associated to that diagram involves an integral over the moduli space of the diagram.}
+\end{center}
+\vskip1ex
+
+Let us now officially begin discussing physics.
+\vskip2ex
+
+
+
+\section{Perturbative String Theory}
+\vskip2ex
+
+
+\subsection{Vertex Operators}
+\vskip2ex
+
+Imagine an particular diagram involving only closed strings with $g$ loops.  The initial and final string states stretch out into the infinite past and infinite future, respectively.  Because the Polyakov action is Weyl invariant, we can make a transformation $g_{\alpha \beta} \to e^{2 \omega} g_{\alpha \beta}$ such that for the right $\omega$, our diagram becomes a compact Riemann surface with $g$ handles.  How can it be compact, given that the initial and final string states are mapped to holes on the surface?  Well, technically it's not compact, but thanks to the state-operator mapping, we can imagine compactifying the surface at the expense of inserting an operator at that location on the worldsheet.  This operator represents the string state and is called a \emph{vertex operator}.  
+\vskip1ex
+The picture changes only slightly when we consider $g$ loop string diagrams with open strings instead.  By a conformal transformation, we can map the worldsheet to a generalized ``$g$-handled annulus" with punctures on the boundary.  Once again, we compactify the space at the expense of inserting open string vertex operators.  
+\vskip1ex
+What about $g$ loop diagrams which have both open \emph{and} closed strings as initial or final states?  Surprisingly, this amplitude is conformally equivalent to the same $g$-handled annulus where the open string vertex operators are inserted on the boundary and the closed string vertex operators are inserted in the interior.  
+\vskip1ex
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=13cm]{SDiagrams.jpg}
+\caption{An illustration of conformal mappings of string diagrams.  Closed string states are represented by \tikzcircle{3pt} while open string states are represented by ${\color{red} \otimes}$}
+\label{fig:nonfloat2}
+\end{center}
+\end{figure}
+\vskip1ex
+For each string state in the figure labeled either by \tikzcircle{3pt} or ${\color{red} \otimes}$ we want to collect its quantum numbers into a state labeled symbolically by $|\Lambda \rangle$.  The vertex operator corresponding to $|\Lambda \rangle$ is simply the operator on the string worldsheet that corresponds to emission and absorption of $|\Lambda \rangle$.  
+\vskip1ex
+Let us focus for the time being on closed strings and motivate the closed string vertex operators.  For each closed string state, there must be a local operator in the CFT denoted by $W_{\Lambda}(\sigma)$ that represents such a particle.  This operator must be a scalar under diffeomorphisms of the worldsheet, but it's tensorial status depends on the particle it represents.  For example, if it represents scalar particles like tachyons or dilatons, then we can take $W=1$ (tachyon) or $W \sim \partial_{\alpha} X_{\mu} \partial^{\alpha} X^{\mu}$ (dilaton).  Notice that when we talk about ``tensorial status" here, we're referring to how the object transforms under \emph{26-dimensional} Lorentz transformations.  
+\vskip1ex
+
+Furthermore, under the global symmetry of spacetime translations, $X^{\mu} \to X^{\mu} + a^{\mu}$, we expect the wavefunction of a string state with momentum $k^{\mu}$ to be multiplied by the factor $e^{i k \cdot a}$.  Therefore, a factor of $e^{i k \cdot X}$ should be present.  Finally, given a string state of momentum $k^{\mu}$, we can insert this operator anywhere on the worldsheet so we must integrate over the worldsheet manifold.  We are finally able to write down the closed string vertex operator,
+\vskip1ex
+
+\begin{equation}
+V_{\Lambda}(k) = \int d^{2} \sigma \sqrt{g} W_{\Lambda}(\sigma) e^{i k \cdot X}
+\end{equation}
+\vskip1ex
+Again, this operator represents the absorption or emission of a string in state $|\Lambda \rangle$ with momentum $k^{\mu}$.  
+\vskip1ex
+
+Vertex operators come into play when we want to scatter $N$ particles off each other.  Let's take these $N$ particles to have quantum states $|\Lambda_{1} \rangle, \ldots, |\Lambda_{N} \rangle$ and momenta $k_{1}, \ldots, k_{N}$.  By our classification theorem of compact, orientable Riemann surfaces, if we want a tree-level amplitude, our worldsheet will be a sphere with $N$ punctures and if it's an $n$-loop diagram, it will be a $n$-holed torus with $N$ punctures.  We define the amplitude of a given diagram to be,
+\vskip1ex
+\begin{equation}
+\mathcal{A}(\Lambda_{1}, k_{1}; \ldots; \Lambda_{N},k_{N}) = g_{\text{c}}^{- \chi} \frac{1}{\text{Vol}} \int \mathcal{D} X \mathcal{D} g e^{-S_{\text{Poly}}} \Pi_{i=1}^{N} V_{\Lambda_{i}}(p_{i}).
+\end{equation}
+\vskip1ex
+
+It's important to note, the above expression is \emph{not} the full scattering amplitude, but rather just the amplitude associated to a given diagram with Euler characteristic $\chi$.  If we then want to entire scattering amplitude we would simply sum over all topologies.  Again, by the classification theorem of Riemann surfaces, this simply corresponds to a sum over genus.  
+\vskip1ex
+
+There's something very rousing about the above amplitude.  Notice that our action is an integral over the two-dimensional worldsheet of the string.  In addition, note that the technology we're using is essentially just quantum field theory.  We should therefore expect that we should be getting information about scattering in a two-dimensional world.  To quite the contrary, we're getting information about scattering in a 26-dimensional world out of a two-dimensional quantum field theory!  This is quite magical indeed, and deserves further emphasis:
+\vskip1ex
+
+\begin{center}
+\emph{According to the above formula, by simply studying structures on the string worldsheet, we can output genuine physical observables in 26-dimensional spacetime.  This is one of the many parallels/analogies between phenomena on the string worldsheet and phenomena in spacetime.  Someone may ask, ``why study conformal field theories, when the universe we live in clearly isn't conformal?"  The natural response to this question, we now see, is that even though the universe isn't conformal, the string worldsheet is.  We can therefore get information about the world around us thanks to the parallel between worldsheet phenomena and spacetime phenomena.}
+\end{center}
+\vskip1ex
+
+Why 26-dimensions?  Well recall from an earlier section that to cancel the volume of the symmetry group, we had to introduce Fadeev-Popov ghosts which restrict the spacetime dimension for the bosonic string to 26.  
+\vskip1ex
+
+Let us now consider the open string.  The picture is essentially the same as that of the closed string except that we now conformally map the worldsheet to the upper-half plane $\bar{\mathbb{H}}$ and then to the disk.  In both cases, the open string states are mapped to the boundary.  Therefore, when writing down the amplitudes, instead of integrating over the entire worldsheet, we simply integrate over the boundary.  This is because the open string vertex operators can be places anywhere on the boundary.  This leads naturally to the definition,
+\vskip1ex
+
+\begin{equation}
+V_{\Lambda}=\int d \tau \sqrt{g_{\tau \tau}} W( \tau ) e^{i k \cdot X}.
+\end{equation}
+\vskip1ex
+This yields the amplitudes to be,
+\vskip1ex
+
+\begin{equation}
+\mathcal{A}(\Lambda_{1}, k_{1}; \ldots; \Lambda_{N},k_{N}) = g_{\text{o}}^{- \chi} \frac{1}{\text{Vol}} \int \mathcal{D} X \mathcal{D} g e^{-S_{\text{Poly}}} \Pi_{i=1}^{N} V_{\Lambda_{i}}(k_{i}).
+\end{equation}
+\vskip1ex
+
+
+{\color{red} There's remnant gauge symmetries on these worldsheets.  The idea is that there are conformal transformations that leave the worldsheet invariant.  Modding out the Riemann surface by this gauge group, gives us the moduli space of the surface.  This is where the integral should take place for the amplitude.  The conformal mappings in Figure 4 aren't the end of the story!  There's also the symmetry group of the Riemann surface to account for.}
+
+
+
+
+
+\vskip2ex
+\subsection{Veneziano and Closed Strings}
+\vskip2ex
+
+The amplitude for the tree-level scattering of 4 closed string tachyons is given by,
+\vskip1ex
+\begin{equation}
+\mathcal{A}(k_{1}, k_{2}, k_{3}, k_{4})=g_{c}^{2} \int d^{2} z_{4}\, |z_{4}|^{k_{1} \cdot k_{4}/2}|1-z_{4}|^{k_{2} \cdot k_{4}/2}
+\end{equation}
+\vskip1ex
+
+There's a couple of things to note about this equation.  First of all, this is an amplitude only in the sense of attaching a number to a specific diagram.  We're not yet doing a sum over topologies here.  So this is just an amplitude of a fixed diagram, not the amplitude for some correlation function.  
+\vskip1ex
+
+Secondly, recall that since this is a tree-level process involving 4 strings, the underlying Riemann surface is a sphere with 4 punctures.  We've already seen that to avoid integrating over too large a region, we really should integrate over the moduli space of the Riemann surface.  The idea is that $z_{4}$ can go anywhere on the sphere, except the other three punctures.  This explains exactly why our integral is reduced like so,
+\vskip1ex
+\begin{equation}
+\int dz_{1}  dz_{2}  dz_{3}  dz_{4}  \,\,\, \longrightarrow \,\,\, \int dz_{4}.
+\end{equation}
+\vskip1ex
+Quite simply, it has only to do with the moduli space!
+\vskip2ex
+
+
+
+
+\subsection{Veneziano Open Strings}
+\vskip2ex
+
+The amplitude for the tree-level scattering of 4 open string tachyons is given by,
+\vskip1ex
+
+\begin{equation}
+\mathcal{A}(k_{1}, k_{2}, k_{3}, k_{4})=g_{o}^{2} \int_{0}^{1} dx \, x^{k_{1} \cdot k_{2}}(1-x)^{k_{2} \cdot k_{3}}
+\end{equation}
+\vskip1ex
+
+Just as above, we should understand exactly why the amplitude here reduces to a one-dimensional integral.  We've already seen that a copy of $\bar{\mathbb{H}}$ with 4 boundary punctures is a surface with moduli $\lambda = z_{4}$ such that $0 < \lambda <1$.  This precisely explains the above integral!
+
+
+
+
+
+\vskip2ex
+\section{The String S-Matrix}
+\vskip2ex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}  
