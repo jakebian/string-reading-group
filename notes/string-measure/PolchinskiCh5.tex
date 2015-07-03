@@ -1,0 +1,207 @@
+\documentclass[12pt,letterpaper]{article}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Page sizing and format                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% for letter size paper:
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+\setlength{\paperheight}{11in}
+\setlength{\paperwidth}{8.5in}
+
+
+% one inch margins all around
+\textwidth=6.5truein
+\textheight=8.6truein  % leaves room for page numbers, adds up to 9in with \footskip
+
+% additional options to change how things fit into a page
+% assuming with no headers and a page number
+
+\hoffset=0truein
+\oddsidemargin = 0pt
+
+\voffset=0truein
+\topmargin=0pt
+\headheight=0pt
+\headsep=0pt
+\footskip = 30pt
+
+
+\linespread{1.1}
+\parskip=0mm
+\parindent=5.0mm
+
+% \pagestyle{empty}
+% \pagestyle{headings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Packages                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}%
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+%\usepackage{pstricks}
+%\usepackage{auto-pst-pdf}
+\usepackage{epsfig,graphicx}
+%\usepackage{lineno}
+%\usepackage{showlabels}
+%\usepackage{showkeys}
+
+%\usepackage{amsfonts}
+
+% \usepackage{graphicx}
+
+% \usepackage{rangecite}
+
+
+% for extra symbols (eg, \celsius)
+% \usepackage{gensymb}
+
+% for complicated tables
+% \usepackage{multirow} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  GENERAL PURPOSE DEFINITIONS                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bear{\begin{eqnarray}}
+\def\eear{\end{eqnarray}}
+\def\nn{\nonumber}
+
+\def\half{{{\frac{1}{2}}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Start here                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{Polchinski Chapter 5 \\ The String S-Matrix}
+\date{}
+\maketitle
+
+The goal of this chapter is to express the string S-matrix (which we previously wrote down as a path integral over the worldsheet with vertex insertions) in a gauge fixed form.
+
+\section*{Section 5.1 \\The circle and the torus}
+Recall how we fixed the diff$\times$ Weyl symmetry gauge choice in chapter 3.  This was done by simply imposing the unit metric on the worldsheet.  In this section, we show that globally, fixing the metric is not sufficient as there remains a mismatch between the space of metrics and the worldsheet gauge group.
+
+To illustrate the problem, we go as usual to the point particle action includin the vierbein,
+\be
+S_{pp}=\int [de\;dX]exp\left[-\frac{1}{2}\int d\tau\left(e^{-1}\dot{X}^{\mu}\dot{X}_{\mu}+em^{2}\right)\right].
+\ee
+We consider a worldline forming a closed path so the relevant topology here is a circle which we represent with the parameter $\tau$ going from 0 to 1.  The vierbein has one component and transforms as
+\be 
+e^{\prime}\;d\tau^{\prime}=e\;d\tau.
+\ee
+We recall that in our previous discussion, we had fixed the gauge symmetry by setting $e = 1$.  However, we realize that it leads to the differential equation
+\be 
+e(\tau)=\frac{\partial \tau^{\prime}}{\partial \tau}
+\ee
+which we can integrate from 0 to $\tau$ yielding
+\be 
+\tau^{\prime} = \int_{0}^{\tau}d\tau^{\prime\prime}e(\tau^{\prime\prime}).
+\ee
+
+Unfortunately, we realize that in the new coordinates, $tau^{\prime}$
+does not go from 0 to 1 as $\tau$ did, but instead varies from 0 to $\int_{0}^{1}d\tau\;e(\tau) = l$ which corresponds to the length of the circle.  We are therefore left with two choices.  We can either keep $e^{\prime}=1$ in which case $\tau^{\prime}$ runs from 0 to $l$.  Or we pick $e^{\prime}=l$ such that $\tau^{\prime}$ still goes from 0 to 1.
+
+The point of this example is to show that after you fix the gauge, you are still left with an integral over $l$. This implies that there is a one-parameter family of non-equivalent vierbeins parametrized by $l$.  Globally, not all choices of vierbeins on the circle are equivalent under diffeomorphisms.  
+\\
+
+We will now move on to the string worldsheet keeping in mind our point particle example.
+
+For the closed string, a closed worldsheet curve corresponds to the topology of a torus which we parametrize by 
+\be 
+0\le \sigma^{1} \le 2\pi,\;\;\;\;\;0\le \sigma^{2} \le 2\pi.
+\ee
+It happens that an arbitrary metric $g_{ab}$ cannot be brought to the unit metric in general under a diff$\times$ Weyl transformation.  The best we can do is bring it to the form
+\be \label{flatmetric}
+ds^{2} = \mid d\sigma^{1}+\tau d\sigma^{2}\mid^{2}.
+\ee
+This is achieved by first making a Weyl transformation taking the worldsheet metric to a flat one.  Then mapping the metric to unit form is not guaranteed to preserve the periodicity.  
+
+As in the point particle case, we get two possible choices.  The first one is to abandon the initial periodicity and take the worldsheet metric to be the unit metric.  in that case, the coordinates sigma get a periodicity of
+\be 
+\tilde{\sigma}^{a} \cong \tilde{\sigma}^{a} + 2\pi\left(mu^{a}+nv^{a}\right).
+\ee
+Under rotations and rescaling, we can set $u$ to the $(1,0)$ vector but $v$ stays arbitrary.  Calling $w = \tilde{\sigma}^{1}+i\tilde{\sigma}^{2}$, the periodicity becomes
+\be \label{w}
+w \cong w + 2\pi(m+n\tau),
+\ee
+where $\tau = v^{1}+iv^{2}$.
+
+Our second option is to preserve the initial periodicity.  In that case, the metric does not take the unit form, but instead is given by equation (\ref{flatmetric}).  The integration over metrics in the path integral will yield two integrals, over the real and imaginary parts of $\tau$. The parameter $\tau$ is known as the modulus and in our case, the metric (\ref{flatmetric}) is invariant under complex conjugation of $\tau$.  
+
+There is some redundancy in the $\tau$ parameter for the string as equation (\ref{w}) is invariant under $\tau\rightarrow \tau + 1$ and $\tau \rightarrow -1/\tau$.  These two transformations generate the group $SL(2,\mathbf{Z})$ which we can think of as the Möbius Transform 
+\be 
+\tau^{\prime} = \frac{a\tau + b}{c\tau + d},
+\ee
+with $ad-bc=1$.  The modular group corresponds to diffeomorphisms of the torus and cannot be obtained from successive infinitesimal transformations starting with the identity.  They are therefore large coordinate transformations.
+
+\newpage
+\section*{Section 5.3 \\The measure for moduli}
+
+We now try to use our new understanding of the Torus moduli to gauge fix the Polyakov path integral.  We then start with the path integral
+\be
+S_{j_{1}...j_{n}}(k_{1}...k_{n})=\sum_{topologies}\int\frac{[d\phi\;dg]}{V_{diff\times Weyl}}\exp(-S_{m}-\lambda\chi)\prod_{i=1}^{n}\int\;d^{2}\sigma_{i}g(\sigma_{i})^{1/2}\mathcal{V}_{j_{i}}(k_{i},\sigma_{i}).
+\ee
+When gauge fixing, the integral over metrics and positions becomes an integral over the gauge group, the moduli and the unfixed positions.  Then applying the usual Fadeev-Popov procedure on the moduli space gives us
+\be\label{FP}
+1=\Delta_{FP}(g,\sigma)\int_{F}d^{\mu}t\int_{diff\times Weyl}[d\zeta]\delta(g-\hat{g}(t)^{\zeta})\prod_{(a,i)\in f}\delta(\sigma_{i}^{a}-\hat{\sigma}_{i}^{\zeta a}).
+\ee
+We can then insert this expression back in the path integral such that the path integral is now an integral over the moduli space and the unfixed coordinates,
+\bear\label{path}
+S_{j_{1}...j_{n}}(k_{1}...k_{n})&=&\sum_{topologies}\int_{F}d^{\mu}t\Delta_{FP}(\hat{g}(t),\hat{\sigma})\int [d\phi]\int\prod_{(a,i)\not\in f}d\sigma_{i}^{a}\nn\\
+&&\times \exp(-S_{m}[\phi,\hat{g}(t)]-\lambda\chi)\prod_{i=1}^{n}\left[\hat{g}(\sigma_{i})^{1/2}\mathcal{V}_{j_{i}}(k_{i},\sigma_{i})\right]
+\eear
+where, in the vertex operators, $\kappa$ of the positions are fixed.
+
+The delta functions in our integral are only non-zero at $n_{r}$ points.  To compute the Fadeev-Popov measure, we expend the metric around these points which corresponds to a local symmetry plus a change in the moduli
+\be
+\delta g_{ab}=\sum_{k=1}^{\mu}\delta t^{k}\partial_{t^{k}}\hat{g}_{ab}-2(\hat{P}_{1}\delta\sigma)_{ab}+(2\delta\omega-\hat{\nabla}\cdot \delta\sigma)\hat{g}_{ab}.
+\ee
+Now inserting this in the expression for the Fadeev-Popov determinant (\ref{FP}) gives 
+\bear
+\Delta_{FP}(\hat{g},\hat{\sigma})^{-1}&=&n_{r}\int d^{\mu}\delta t[d\delta\omega\;d\delta\sigma]\delta(\delta g_{ab})\prod_{(a,i)\in f}\delta(\delta\sigma^{a}(\hat{\sigma}_{i}))\nn\\
+&=& n_{r}\int d^{\mu}\delta t\;d^{\kappa}x[d\beta^{\prime}\;d\delta\sigma]\nn\\
+&&\times \exp\left[2\pi i(\beta^{\prime},2\hat{P}_{1}\delta\sigma-\delta t^{k}\partial_{k}\hat{g})+2\pi i\sum_{(a,i)\in f}x_{a,i}\delta\sigma^{a}(\hat{\sigma}_{i})\right].
+\eear
+Here, the last line has been transformed in a similar fashion as in section 3.3.  From there, obtaining the determinant instead of the inverse determinant comes by interchanging the bosonic variables by grassmanian ones.  The transformations are as follows
+\bear
+\delta\sigma^{a}&\rightarrow& c^{a}\nn\\
+\beta^{\prime}_{ab}&\rightarrow& b_{ab}\nn\\
+x_{ai}&\rightarrow&\eta_{ai}\nn\\
+\delta t^{k}&\rightarrow&\xi^{k}.
+\eear
+After performing these transformations, the Fadeev-Popov determinant becomes
+\bear
+\Delta_{FP}(\hat{g},\hat{\sigma})&=&\frac{1}{n_{r}}\int [db\;dc]d^{\mu}\xi\;d^{\kappa}\eta\nn\\
+&&\times \exp\left[-\frac{1}{4\pi}(b,2\hat{P}_{1}c-\xi^{k}\partial_{k}\hat{g})+\sum_{(a,i)\in f}\eta_{ai}c^{a}(\hat{\sigma}_{i})\right]\nn\\
+&=&\frac{1}{n_{r}}\int [db\;dc]\exp(-S_{g})\prod_{k=1}^{\mu}\frac{1}{4\pi}(b,\partial_{k}\hat{g})\prod_{(a,i)\in f}c^{a}(\hat{\sigma}_{i}).
+\eear
+We have finally managed to write the appropriate measure for integration on the moduli space as a ghost path integral with insertions.  Inserting this result back in the path integral (\ref{path}), we get the final result
+\bear
+S_{j_{1}...j_{n}}(k_{1}...k_{n})&=&\sum_{topologies}\int_{F}\frac{d^{\mu}t}{n_{r}}\int [d\phi\;db\;dc]\exp(-S_{m}-S_{g}-\lambda\chi)\nn\\
+&&\times \prod_{(a,i)\not\in f}\int d\sigma_{i}^{a}\prod_{k=1}^{\mu}\frac{1}{4\pi}(b,\partial_{k}\hat{g})\prod_{(a,i)\in f}c^{a}(\hat{\sigma}_{i})\prod_{i=1}^{n}\left[\hat{g}(\sigma_{i})^{1/2}\mathcal{V}_{j_{i}}(k_{i},\sigma_{i})\right].
+\eear
+This result is the punch line as it is a universal expression for the bosonic string.  It fits open, closed oriented and unoriented theories as the only modifications to be made are to decide which topologies and vertex operators are allowed for different theories.  
+
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  EXAMPLES FOR FIGURES, ETC...                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\parbox[l]{2.5in}{
+\includegraphics[scale=0.9]{file.png}
+\includegraphics[scale=0.9]{file.pdf}
+\fi}
