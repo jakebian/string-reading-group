@@ -1,0 +1,18 @@
+\contentsline {section}{\numberline {1}Motivation \& Prerequisites}{1}
+\contentsline {subsection}{\numberline {1.1}Motivation}{1}
+\contentsline {subsection}{\numberline {1.2}Differential Operators on Riemann Surfaces}{2}
+\contentsline {subsubsection}{\numberline {1.2.1}Basics}{2}
+\contentsline {paragraph}{\numberline {1.2.1.1}Riemann Surfaces}{2}
+\contentsline {paragraph}{\numberline {1.2.1.2}The Metric Isomorphism}{2}
+\contentsline {subsubsection}{\numberline {1.2.2}Line Bundles of Fixed-Weight Tensors}{3}
+\contentsline {subsubsection}{\numberline {1.2.3}Differential Operators}{4}
+\contentsline {section}{\numberline {2}Moduli Space}{5}
+\contentsline {subsection}{\numberline {2.1}Problem Statement \& Strategy}{5}
+\contentsline {subsection}{\numberline {2.2}$Met(\Sigma )$ Tangent Space Decomposition}{6}
+\contentsline {subsubsection}{\numberline {2.2.1}$T^{(1, 1)}$}{6}
+\contentsline {subsubsection}{\numberline {2.2.2}$T^{(2, 0)}$ and $T^{(0, 2)}$}{7}
+\contentsline {subsection}{\numberline {2.3}The $Mod(\Sigma )$ Measure}{8}
+\contentsline {section}{\numberline {3}String Amplitudes}{8}
+\contentsline {subsection}{\numberline {3.1}Tree Level}{8}
+\contentsline {subsection}{\numberline {3.2}Witten's Geometric Intepretation of $i \epsilon $}{8}
+\contentsline {subsection}{\numberline {3.3}Beyond Tree Level}{8}

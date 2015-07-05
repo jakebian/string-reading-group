@@ -1,0 +1,45 @@
+Let's recall some basic notions from differential geometry on Riemann surfaces.
+
+\paragraph{Riemann Surfaces}
+
+    For our purposes, a Riemann surface $\Sigma$ is a 1-dimensional complex manifold.  We will be particularly interested in examples where $\Sigma$ is compact and connected, the topology of such $\Sigma$ is completely fixed by a genus $g$.
+
+    In string theory we deal with Riemann surfaces equipped with metrics, i.e. Hermitian manifolds $(\Sigma, g)$. Being equivalent to a real Riemannian 2-manifold,  $(\Sigma, g)$ is conformally flat. That is, in each coordinate chart $U \subset \Sigma$, we have a diffeomophism:
+
+    \begin{equation}
+        \phi_U: U \to \mathbb C, ~~
+        p \mapsto (z, \bar z)
+    \end{equation}
+
+    such that
+
+    \begin{equation}
+        g = k(z, \bar z) dz \otimes d\bar z
+        \label{eq:riemann-surface-metric}
+    \end{equation}
+
+\paragraph{The Metric Isomorphism}
+
+    As usual, $g$ gives an isomorphism $\tilde g$ between tangent and cotangent spaces at each point $p \in \Sigma$
+
+        \begin{equation}
+            \tilde g: T_p\Sigma \to T_p^*\Sigma ~,~ v \mapsto g(v, \cdot)
+        \end{equation}
+
+    As usual, it is convenient to view the inverse $g^{-1}$ of the $ g$ isomorphism as a rank $(2, 0)$ tensor defined in each coordinate chart by taking the matrix inverse of the components of $g$. In the case of Riemann surfaces, we have simply
+
+        \begin{equation}
+            g^{-1} = k^{-1}(z, \bar z) \partial_z \otimes \partial_{\bar z}
+            \label{eq:2d-metric-inverse}
+        \end{equation}
+
+    These in turn give isomorphisms between tensors of different ranks
+        \begin{equation}
+            T_{[a,b]} \xrightarrow{g} T_{[a-1,b+1]}  \xrightarrow{g} ... \xrightarrow{g}  T_{[0,a + b]}
+        \end{equation}
+
+        \begin{equation}
+            T_{[a,b]} \xrightarrow{g^{-1}} T_{[a+1,b-1]}  \xrightarrow{g^{-1}} ... \xrightarrow{g^{-1}}  T_{[a + b,0]}
+        \end{equation}
+
+    where $T_{[a,b]} \equiv (\otimes^a T\Sigma)(\otimes^b T^*\Sigma)$ is the space of rank $(a, b)$ tensors. These sequences of isomorphisms tell us we can restrict our attention to pure tensors without losing much generality.

@@ -1,0 +1,522 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 222.0,
+		"last_filter": "instal",
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"INSTAL",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"setting",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"sublimelinter",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"ins",
+				"Package Control: Advanced Install Package"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 118.0,
+		"history":
+		[
+			"LaTeXTools.sublime-settings",
+			"sublime.run_command(\"latextools_migrate\")",
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/jake/work/integral-geometry",
+		"/home/jake/work/integral-geometry/sections"
+	],
+	"file_history":
+	[
+		"/home/jake/work/integral-geometry/sections/hyperbolic-plane.tex",
+		"/home/jake/work/integral-geometry/sections/ads3.tex",
+		"/home/jake/work/integral-geometry/draft.tex",
+		"/home/jake/work/integral-geometry/sections/flat-space.tex",
+		"/home/jake/work/integral-geometry/sections/construction.tex",
+		"/home/jake/work/integral-geometry/sections/intro.tex",
+		"/home/jake/work/integral-geometry/refs.bib",
+		"/home/jake/work/integral-geometry/draft.bbl",
+		"/home/jake/work/integral-geometry/integral-geometry.sublime-project",
+		"/home/jake/work/integral-geometry/.gitignore",
+		"/home/jake/work/integral-geometry/sections/problems.tex",
+		"/home/jake/work/integral-geometry/.sublime-project",
+		"/home/jake/.config/sublime-text-3/Packages/User/LaTeXTools.sublime-settings",
+		"/home/jake/desitter-js/app/public/js/scene-factory.js",
+		"/home/jake/desitter-js/app/public/js/run.js",
+		"/home/jake/desitter-js/app/public/js/draw-scene.js",
+		"/home/jake/desitter-js/app/public/index.html",
+		"/home/jake/desitter-js/app/public/bower.json",
+		"/home/jake/desitter-js/app/public/vendor/marchingcubes.js",
+		"/home/jake/desitter-js/README.md",
+		"/home/jake/desitter-js/app/scss/style.scss",
+		"/home/jake/desitter-js/package.json",
+		"/home/jake/desitter-js/Gruntfile.js",
+		"/home/jake/desitter-js/.gitignore",
+		"/home/jake/Desktop/ucsb courses",
+		"/home/jake/Desktop/ucsb prereqs",
+		"/home/jake/Desktop/cpsc-clearance-email",
+		"/home/jake/Desktop/math-clearance-email",
+		"/home/jake/Desktop/chatboard/app/scss/style.scss",
+		"/home/jake/Desktop/chatboard/.gitignore",
+		"/home/jake/Desktop/chatboard/Gruntfile.js",
+		"/home/jake/Desktop/chatboard/app/public/index.html",
+		"/home/jake/Desktop/chatboard/app/launch.js",
+		"/home/jake/Desktop/chatboard/app/scss/components/codepad.scss",
+		"/home/jake/Desktop/chatboard/app/scss/components/video.scss",
+		"/home/jake/Desktop/chatboard/app/scss/board.scss",
+		"/home/jake/Desktop/chatboard/app/public/css/board.css",
+		"/home/jake/Desktop/chatboard/README.md",
+		"/home/jake/todo/todo",
+		"/usr/share/X11/xkb/symbols/us-custom",
+		"/home/jake/Desktop/string-reading-group/notes/week1/cft.md",
+		"/home/jake/Desktop/string-reading-group/README.md",
+		"/home/jake/max-entropy-maple/maxEntropy.mla",
+		"/home/jake/Desktop/chatboard/public/index.html",
+		"/home/jake/Desktop/chatboard/public/js/components/board.js",
+		"/home/jake/Desktop/chatboard/public/bower.json",
+		"/home/jake/Desktop/chatboard/public/js/common/firebase-service.js",
+		"/home/jake/Desktop/chatboard/public/templates/room.html",
+		"/home/jake/Desktop/chatboard/public/style/codepad.css",
+		"/home/jake/Desktop/chatboard/.jshintrc",
+		"/home/jake/Desktop/chatboard/public/js/board-modules/codepad.js",
+		"/home/jake/Desktop/chatboard/public/js/board-modules/video.js",
+		"/home/jake/Desktop/chatboard/public/js/board-modules/board-modules.js",
+		"/home/jake/Desktop/chatboard/public/js/common/webrtc-service.js",
+		"/home/jake/Desktop/chatboard/public/js/app.js",
+		"/home/jake/Desktop/archive/10.100.50.10",
+		"/home/jake/Desktop/archive/projects_archive/CTCI",
+		"/home/jake/Desktop/max-entropy/run.py",
+		"/home/jake/Desktop/max-entropy/rho.py",
+		"/home/jake/Desktop/max-entropy/observables.py",
+		"/home/jake/Desktop/max-entropy/.gitignore",
+		"/home/jake/.local/share/Trash/files/pylintrc",
+		"/home/jake/Desktop/max-entropy/pylintrc",
+		"/home/jake/Desktop/max-entropy/.pylintrc",
+		"/home/jake/Desktop/d4/d4/src/d4/utility/projections.js",
+		"/home/jake/Desktop/d4/d4/Gruntfile.js",
+		"/home/jake/Desktop/d4/demo/public/demo.js",
+		"/home/jake/Desktop/d4/d4/src/d4/utility/renderer.js",
+		"/home/jake/Desktop/d4/d4/src/d4.js",
+		"/home/jake/Desktop/d4/d4/src/d4/utility/coords-util.js",
+		"/home/jake/Desktop/d4/d4/spec/coords-util.spec.js",
+		"/home/jake/Desktop/d4/d4/spec/helpers/is-similar-array.js",
+		"/home/jake/Desktop/d4/d4/package.json",
+		"/home/jake/Desktop/d4/d4/src/tests/coords-util.spec.js",
+		"/home/jake/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/jake/Desktop/d4/d4/.jshintrc",
+		"/home/jake/Desktop/d4/d4/tests/coords-util.spec.js",
+		"/home/jake/Desktop/d4/d4/src/d4/models/Camera.js",
+		"/home/jake/Desktop/d4/d4/src/d4/Renderer.js",
+		"/home/jake/Desktop/d4/demo/package.json",
+		"/home/jake/Desktop/d4/README.md",
+		"/home/jake/Desktop/d4/demo/public/index.html",
+		"/home/jake/Desktop/nerves-js/nerves/build-util/wrap/wrap.start",
+		"/home/jake/Desktop/nerves-js/demo/public/index.html",
+		"/home/jake/Desktop/nerves-js/demo/launch.js",
+		"/home/jake/Desktop/nerves-js/d4/src/nerves.js",
+		"/home/jake/Desktop/nerves-js/d4/src/d4/foo.js",
+		"/home/jake/Desktop/nerves-js/d4/Gruntfile.js",
+		"/home/jake/Desktop/nerves-js/nerves/Gruntfile.js",
+		"/home/jake/Desktop/nerves-js/d4/README.md",
+		"/home/jake/Desktop/nerves-js/demo/public/demo.js",
+		"/home/jake/Desktop/nerves-js/d4/package.json",
+		"/home/jake/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/jake/Desktop/nerves-js/nerves/build-util/wrap/wrap.end",
+		"/home/jake/Desktop/archive/usersfull",
+		"/home/jake/Desktop/archive/usersall",
+		"/home/jake/.config/sublime-text-3/Packages/User/usersscript.js",
+		"/home/jake/Desktop/users",
+		"/home/jake/Desktop/usersall",
+		"/home/jake/Desktop/puz",
+		"/home/jake/Desktop/shopifycover",
+		"/home/jake/eclipse-workspace/webapps/frontend/src/resources/local.properties",
+		"/home/jake/Desktop/d3demo/index.html",
+		"/home/jake/Desktop/protofinance/views/index.jade",
+		"/home/jake/Desktop/d3demo/stocks.csv",
+		"/home/jake/Desktop/protofinance/node_modules/freebase/auth/credentials.js",
+		"/home/jake/Desktop/protofinance/app.js",
+		"/home/jake/Desktop/protofinance/run.js",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/views/partials/sections/te-components/simple-color-picker.ejs",
+		"/home/jake/eclipse-workspace/webapps/frontend/build/frontend/static/html/app/view/tables/components/table-bar.html",
+		"/home/jake/eclipse-workspace/webapps/style-guide/contents.js",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/views/index.ejs",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/public/css/style-guide.css",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/public_frontend/static/js/common/ui.js",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/views/partials/staging.ejs",
+		"/home/jake/eclipse-workspace/webapps/frontend/build/frontend/static/js/hero/hero-templates.js",
+		"/home/jake/eclipse-workspace/webapps/frontend/build/frontend/static/js/app-templates.js",
+		"/home/jake/eclipse-workspace/webapps/frontend/build/frontend/static/html/common/ui/date-time-selector.html",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/views/partials/sections/te-components/how-long-since.ejs",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/views/partials/sections/te-components/elapsednicefy.ejs",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/views/partials/sections/te-components/datenicefy.ejs",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/views/partials/templates/component.ejs",
+		"/home/jake/eclipse-workspace/webapps/frontend/build/frontend/static/js/common/ui.js",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/public/js/sg/sg-control.js",
+		"/home/jake/eclipse-workspace/webapps/style-guide/scripts/sg-util-str.js",
+		"/home/jake/eclipse-workspace/webapps/style-guide/scripts/sg-util.js",
+		"/home/jake/eclipse-workspace/webapps/style-guide/webapp/views/partials/sections/te-components/datenicefy-range.ejs",
+		"/home/jake/eclipse-workspace/webapps/frontend/build/frontend/static/html/common/ui/timerangepicker.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 87.0,
+		"where_history":
+		[
+			"/home/jake/Desktop/chatboard/public/js",
+			"/home/jake/Desktop/chatboard/public",
+			"/home/jake/Desktop/d4",
+			"/home/jake/Desktop/d4/d4",
+			"/home/jake/eclipse-workspace/webapps",
+			"/home/jake/eclipse-workspace/webapps/style-guide/webapp/public_frontend/static/js",
+			"/home/jake/eclipse-workspace/webapps",
+			"/home/jake/eclipse-workspace",
+			"/home/jake/eclipse-workspace/webapps",
+			"/home/jake/eclipse-workspace",
+			"/home/jake/eclipse-workspace/webapps",
+			"/home/jake/eclipse-workspace",
+			"/home/jake/eclipse-workspace/webapps/style-guide",
+			"/home/jake/eclipse-workspace/webapps"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"we see",
+			"\"",
+			"I",
+			"2",
+			"where $",
+			"path",
+			"raycast",
+			"event.clientX",
+			"clientx",
+			"client",
+			"render",
+			"preventDefault()",
+			"exports",
+			"render",
+			"CONFIG",
+			"renderer",
+			"container",
+			"win",
+			"lctl",
+			"super",
+			"ctrl",
+			"holonomy",
+			"hol",
+			"holonomy",
+			"$save",
+			"gridLayout",
+			"GridLayoutChange",
+			"initGridSync",
+			"FirebaseService",
+			"videoDataGetter",
+			"fireLink",
+			"my-board",
+			"addPoweredByLogo_",
+			"initializeCall",
+			"addModule",
+			"videoDataGetter",
+			"get_exponent",
+			"N",
+			"reduce",
+			"symbol(",
+			"multipliers",
+			"add_tuple_product",
+			"v",
+			"get_exponent",
+			"0141",
+			"OBSERVABLES",
+			"observables",
+			"disable",
+			"W1234",
+			"console.log",
+			"drag",
+			"force",
+			"sphericalCoords",
+			"angular",
+			"nerves",
+			"    ",
+			"undefined",
+			"    ",
+			"	",
+			"undefined",
+			"    ",
+			"friend",
+			"      ",
+			"|",
+			"    ",
+			"|",
+			"University of Waterloo",
+			"te-Date-Input",
+			"selector-h\\",
+			"selectorheader",
+			"sidebar",
+			".directive",
+			"colorpicker",
+			"<colorpicker",
+			"colorpicker",
+			"directive(",
+			"timeline-Chart",
+			"te.ui.charts.directives.timeline",
+			"te-Bar",
+			"line-Chart",
+			"te-How-Long-Since",
+			"te-Elapsednicefy",
+			"code",
+			"datenicefy",
+			"te-Datenicefy",
+			"teHide",
+			"te-hide",
+			"te-section",
+			"sortable",
+			"te-sortable",
+			"te-tip",
+			"teTip",
+			"lib",
+			"/moment",
+			"moment.js",
+			"te-Timerangepicker",
+			"teTimerangepicker",
+			"teSelectNumber",
+			"te-select-number",
+			"te-Select-Number",
+			"status",
+			"getDirectiveMap",
+			"\"",
+			"te-slider",
+			"sorter",
+			"te-Sorter",
+			"te-sorter",
+			"te-geomap",
+			"teGeomap",
+			"te-geomap",
+			"section",
+			"\"",
+			"sections",
+			"getTeComponent",
+			"component",
+			",  ",
+			",",
+			"\""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"sphereCoords",
+			"spherical",
+			"d4",
+			"	",
+			"",
+			"	",
+			"",
+			"	",
+			"	friend",
+			"	",
+			"    ",
+			"&#9;",
+			"U+0009",
+			"    ",
+			"uw",
+			"'",
+			", ",
+			"'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 244.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "integral-geometry.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"index.html",
+				"public/index.html"
+			],
+			[
+				"bower.js",
+				"public/bower.json"
+			],
+			[
+				"room.html",
+				"public/templates/room.html"
+			],
+			[
+				"firebaseserv",
+				"public/js/common/firebase-service.js"
+			],
+			[
+				"board.js",
+				"public/js/components/board.js"
+			],
+			[
+				"d4.js",
+				"d4/src/d4.js"
+			],
+			[
+				"gruntfile",
+				"d4/Gruntfile.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 241.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
