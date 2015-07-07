@@ -1,0 +1,79 @@
+\subsubsection{Line Bundles of Fixed-Weight Tensors}
+
+    The most general rank $(0, w)$-tensor $T$ over $\Sigma$ lives in the tensor product cotangent bundle $\otimes^w T^*\Sigma$:
+
+    \begin{equation}
+        T = T{\mu_1 ... \mu_w} d\omega^{\mu_1}\otimes ... \otimes d\omega^{\mu_w}
+    \end{equation}
+
+    with $\mu_i \in \{0, 1\}$, $\omega^\mu \in \{z, \bar z\}$. This can always be written as
+
+    \begin{equation}
+        T = \tilde T(\otimes^m dz) (\otimes^n d \bar z)
+        \label{eq:general-tensor}
+    \end{equation}
+
+    For some  $\tilde T \in \mathbb C$. and $m, n \in \mathbb Z^+$ with $m + n = w$. We say $T$ is a (contravariant) tensor of weight $(m, n)$, and conformal dimension $w$.
+
+    We call the collection of these tensors $K_0^{(m n)}$
+
+    \begin{equation}
+        K_0^{(m, n)} \equiv \{ T \in \otimes^{m + n} T^*\Sigma ~|~ T \text{ has weight (m, n) }\}
+    \end{equation}
+
+    From \ref{eq:general-tensor} one can see that $K^{(m, n)}$ is a 1-dimesisonal vector space, hence $K$ defines a line bundle over $\Sigma$.
+
+    One can make a trivial remark at this point: each space $K^{(m, n)}$ with different values of $(m,n)$ are isomorphic - namely they're all isomorphic to $\mathbb C$. One can then wonder how do these space differ. In our case, the only difference we will care about is the factor they gain under a pullback under a diffeomorphism. To this end, let's consider for a moment mixed tensors of the form
+
+    \begin{equation}
+        T = \tilde T(\otimes^m dz) (\otimes^n \partial \bar z) (\otimes^a \partial_z) (\otimes^b \partial_{\bar z})
+    \end{equation}
+
+    Observe that under a pullback by a diffeomorphism transform exactly like the tensor
+
+    \begin{equation}
+        \tilde T(\otimes^{(m-a)} dz) (\otimes^{(n-b)} d\bar z)
+    \end{equation}
+
+    Hence for our purposes, we will not distinguish between those two tensors. Let's give a name to this collection
+
+    \begin{defn}
+
+        $$
+        K^{(m, n)} \equiv \{ \tilde T(\otimes^{m-a} dz) (\otimes^{n-b} \partial \bar z) (\otimes^a \partial_z)
+        (\otimes^b \partial_{\bar z}) | a,b \in \mathbb Z^+, \tilde T \in \mathbb C \} / \sim
+        $$
+
+        where $\sim$ is the equivalence relation $A \sim B$ if they have the same scalar factor.
+    \end{defn}
+
+    The quotient by the identification of course makes sure that $K^{(m, n)}$ is isomorphic to $K_0^{(m,n)}$.
+
+
+    Under the metric isomorphism discussed earlier, using the explicit form of the metric \ref{eq:2d-metric-inverse} (namely the fact that the diagonals vanish), we see that the the action of the metric is:
+
+    \begin{equation}
+        \tilde T(\otimes^m dz) (\otimes^n d \bar z) \mapsto \tilde T'(\otimes^m dz)(\otimes^{n-1} d \bar z)\otimes \partial_z
+    \end{equation}
+
+    The metric $g$ therefore gives isomorphisms
+
+    \begin{equation}
+        K^{(m, n)} \xrightarrow{g} K^{(m-1, n-1)}  \xrightarrow{g} ... \xrightarrow{g}  K^{(m-n, 0)}
+    \end{equation}
+
+    In particular, $K^{(m, n)} \simeq K^{(m-n, 0)}$. This tells us it is often sufficient to only care about tensors that only have z-indices. We therefore introduce the abbreviated notation:
+
+    \begin{equation}
+        K^{m} \equiv K^{(m, 0)}
+    \end{equation}
+
+    Note that in this notation we allow $m$ to be negative - a tensor of weight $- n$ for some $n > 0 $ is defined to be one of weight $(0, n)$.
+
+    Being a complex line bundle over $\Sigma$, $K^m$ is a complex manifold in its own right. Furthermore we will equip it with an inner product $ \langle \cdot{} , \cdot{} \rangle$:
+
+    \begin{equation}
+        \langle \phi , \psi \rangle \equiv \int_\Sigma du ~g_{z \bar z}^{-m}~ \phi \psi
+    \end{equation}
+
+    where $du$ is the invariant measure on $(\Sigma, g)$.

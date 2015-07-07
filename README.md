@@ -9,8 +9,11 @@ Notes and selected problem solutions from a string theory reading group at UBC i
 
 ## Notes
 
-- [Week 1 - 2: CFTs](notes/cfts)
-- [Week 3 - 4: The Polykov Path Integral](notes/polykov-path-integral)
+- [Week 1 - 2: CFTs (Jake)](notes/cfts)
+- [Week 3 - 4: The Polykov Path Integral (Stephen)](notes/polykov-path-integral)
+- [Week 5: BRST (Matt)](notes/BRST)
+- [Week 6: The String Measure (Laurent)](notes/string-measure)
+- [Week 7: Moduli Space & Polyakov Measure (Jake)](notes/moduli-amplitude)
 
 ## Problems
 - [Week 0: Overview & String Action](problems/week0)

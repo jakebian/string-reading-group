@@ -1,0 +1,11 @@
+*.aux
+*.log
+*.fdb_latexmk
+*.synctex.gz
+*.blg
+*.toc
+*.bbl
+*.sublime-workspace
+*.out
+*.log
+*.fdb_latexmk

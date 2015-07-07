@@ -1,0 +1,28 @@
+Let $\Sigma$ be a Riemann surface. Let $Met(\Sigma)$ denote the space of all metrics on $\Sigma$. Define the moduli space as the quotient
+
+\begin{equation}
+    Mod(\Sigma) \equiv Met(\Sigma)/(Diff(\Sigma) \ltimes Weyl(\Sigma))
+\end{equation}
+
+where $\ltimes$ denotes a semidirect product. Viewing this quotient space as a local product $Met(\Sigma) \xrightarrow{\pi} Mod(\Sigma)$, then locally, $Met(\Sigma)$ can be decomposed as
+
+\begin{equation}
+    Met(\Sigma) \simeq Mod(\Sigma)  \oplus (Diff(\Sigma) \ltimes Weyl(\Sigma))
+\end{equation}
+
+in particular a metric $g \in Met(\Sigma)$ can be written as
+
+\begin{equation}
+    g \sim (m, \sigma, v)
+\end{equation}
+
+for $m \in Mod(\Sigma)$, and $\sigma \in Weyl(\Sigma)$, $ v \in Diff(\Sigma)$.
+
+Observe now on $Met(\Sigma)$ we can define a natural gaussian measure $\mathcal{D}g$ with respect to any tangent space $T_g Met(\Sigma)$. Our goal is then to find a integration measure on $Mod(\Sigma)$ by "projecting" the $Met(\Sigma)$ measure $\mathcal D g$. More concretely, we want to decompose $\mathcal D g$ as
+
+\begin{equation}
+    \mathcal D g = J \mathcal D m \mathcal D \sigma \mathcal D v
+    \label{eq:measure-decomp}
+\end{equation}
+
+for some Jacobian $J$. We can subsequently perform the integration over the gauge orbits to obtain the measure on moduli space. By our discussion on Gaussian measures, one can compute the Jacobian $J$ by evaluating gaussian integrals with respect to our metric inner product on the tangent space. Our next step therefore is to decompose the tangent space $T_g Met(\Sigma)$.

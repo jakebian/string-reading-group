@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{
+    mathtools,
+    amsfonts,
+    amsmath,
+    tikz-cd,
+    amsthm,
+    graphicx,
+    amssymb,
+    titlesec
+}
+
+\title{Notes on Moduli Space and the Polyakov Measure}
+\author{Jake Bian}
+
+\setcounter{secnumdepth}{4}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\begin{document}
+
+    \graphicspath{ {images/} }
+    \numberwithin{equation}{section}
+    \newtheorem{defn}{Definition}[section]
+    \newtheorem{prop}{Proposition}[section]
+    \newtheorem{corr}{Corollary}[section]
+    \newtheorem{remark}{Remark}[section]
+
+    \maketitle
+
+    \abstract{
+        We give a pedagogical review of the moduli space measure in string theory. These notes are prepared for a  talk at UBC in Summer 2015 as a part of an ongoing string theory reading group. The exposition and choice of topics is heavily inspired by D'Hoker's 1999 IAS lectures \cite{ias99}.
+    }
+
+    \tableofcontents
+
+    \section{Motivation \& Prerequisites}
+        \input{sections/motivation/main}
+
+    \section{Moduli Space}
+        \input{sections/moduli/main}
+
+
+
+    \bibliography{refs}{}
+    \bibliographystyle{abbrv}
+
+\end{document}

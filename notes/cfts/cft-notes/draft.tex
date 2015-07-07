@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{
+    mathtools,
+    amsfonts,
+    amsmath,
+    tikz-cd,
+    amsthm,
+    graphicx
+}
+
+\title{Notes on 2D Conformal Field Theories}
+\author{Jake Bian}
+
+
+\begin{document}
+
+    \graphicspath{ {images/} }
+    \numberwithin{equation}{section}
+    \newtheorem{defn}{Definition}[section]
+    \newtheorem{prop}{Proposition}[section]
+    \newtheorem{corr}{Corollary}[section]
+
+    \maketitle
+
+    \abstract{
+        This is (yet another) pedagogical review of conformal field theories, with a slight emphasis on clarifying the geometric aspects. This is a work in progress. These notes are prepared for two pedagogical talks at UBC in Summer 2015 as a part of an ongoing string theory reading group.
+    }
+
+
+    \tableofcontents
+
+    \input{content}
+
+    \bibliography{refs}{}
+    \bibliographystyle{abbrv}
+
+\end{document}

@@ -1,0 +1,67 @@
+\subsubsection{Differential Operators}
+
+    For readability, let's slightly abuse our notation and use $K^{(m, n)}$ the space of sections over the line bundle which we previously called $K^{(m, n)}$.
+
+    Let's consider a metric connection on $\Sigma$. The condition of metric compatibility reads:
+    \begin{equation}
+        \nabla_X g = 0 ~~ \forall X \text{ section to $T\Sigma$}
+    \end{equation}
+
+    In components, this translates to the demand that all components of $\nabla_a g_{bc}$ vanish. Using eq. \ref{eq:riemann-surface-metric}, this gives us all the Christoffel symbols. In the below we only state the results needed for our purposes, for the derivations, see for example \cite{nakahara}.
+
+    The covariant derivative can be decomposed as:
+
+    \begin{equation}
+        \nabla \equiv \nabla_{\bar z} + \nabla_{ z}
+    \end{equation}
+
+    with
+
+    \begin{equation}
+        \nabla_{\bar z}: K^{(m, n)} \to K^{(m, n+1)}, ~~ \phi \mapsto \partial_{\bar z} \phi \otimes d \bar z
+    \end{equation}
+
+    \begin{equation}
+        \nabla_z: K^{(m, n)} \to K^{(m + 1, n)}, ~~ \phi \mapsto (k^{-m} \partial_z k^m) \phi \otimes d z
+    \end{equation}
+
+    As mentioned, we would like to restrict our attention to pure z-index tensors, so that we can look at spaces $K^{a-b}$ as opposed to $K^{(a, b)}$. Setting $n=0$ in the domain of the operators above.
+
+    Observe the latter of these two operators is already one which takes pure-z tensor to another pure-z one. To obtain from $\nabla_{\bar z}$ another operator which maps strictly to pure z-tensors, we can subsequently use the inverse metric to map $K^{(m, 1)} \to K^{m-1}$. That is, we define map:
+
+    \begin{equation}
+        \nabla^z \equiv g^{-1} \circ \nabla_{\bar z}
+    \end{equation}
+
+    observe this acts as:
+
+    \begin{equation}
+        \nabla^z: K^{(m, n)} \to K^{(m - 1, n)}, \phi \mapsto k^{-1}\partial_{\bar z} \phi \otimes \partial_{ z}
+    \end{equation}
+
+    From now on let's fix $n=0$ in the domain of these maps. For clarity of the below definitions we also add a superscript or subscript in brackets to denote the $z$-weight $m$ of the domain of these maps, e.g. $\nabla^z_{(m)}$, $\nabla_z^{(m)}$. Note that $\nabla_z$ and $\nabla^z$ are related by adjoints with respect to the metric inner product:
+
+    \begin{equation}
+        \nabla_z^\dagger = \nabla^z
+    \end{equation}
+
+    We can define Lapacians as compositions of these:
+
+    \begin{equation}
+        \triangle^+_m \equiv \nabla_z^{(m)} \nabla^z_{(m+1)} ~,~ K^{m+1} \to K^{m + 1}
+    \end{equation}
+    \begin{equation}
+        \triangle^-_m \equiv \nabla^z_{(m)} \nabla_z^{(m-1)} ~,~ K^{m-1} \to K^{m - 1}
+    \end{equation}
+
+    All this can be summarized by a commutative diagram:
+
+    \begin{equation}
+        \begin{tikzcd}[row sep=4.5em]
+            & K^{m-1} \\
+            K^{m-1} \arrow{r}{\nabla_z}
+            \arrow{ru}{\triangle^-} & K^m \arrow{u}{\nabla^z}
+            \arrow{r}{\nabla_z} & K^{m+1}\\
+            &K^{m+1} \arrow{ru}{\triangle^+} \arrow{u}{\nabla^z}
+        \end{tikzcd}
+    \end{equation}
