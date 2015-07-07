@@ -82,5 +82,79 @@
 
 \subsubsection{The Gauge Slice Measure}
 
+    Note that so far, where the components of $\omega$ tangent to the gauge orbit have been explicit, the component $\rho$ tangent to the gauge orbit have been symbolic - namely $\rho$ is an element in the complex vector space $ker \nabla^{(2)}_{\bar z}$. To find the $\rho$ measure, we must choose a basis for $ker \nabla^{(2)}_{\bar z}$, then integrate the components of $\rho$ in this basis. Additionally, we would like this basis to be Weyl invariant.  Elements $(\mu_j)_{1 \le j \le dim(Mod(\Sigma))}$ in a Weyl-invariant basis for $ker \nabla^{(2)}_{\bar z}$ are called \textit{Beltrami Differentials}.
 
-We can now consider a basis $(\mu_j)_{1 \le j \le dim(Mod(\Sigma))}$ for $Ker(\nabla^{(2)}_{\bar z})$. Such bases (and their complex conjugates) are called \textit{Beltrami Differentials}. 
+    In terms of the Beltrami Differentials, we can write $\rho$ and $\bar \rho$ as
+
+    \begin{align}
+        \rho & = \rho^j \mu_j\\
+        \bar \rho & = \bar \rho^j \bar \mu_j\\
+    \end{align}
+
+    Since the Beltrami differentials are in general not an orthogonal basis, let's write the above in an orthogonal basis. Let $(\phi_j)_{1 \le j \le dim(Mod(\Sigma))}$ be an orthogonal basis for $ker \nabla^{(2)}_{\bar z}$. Freshman linear algebra tells us how to write $\rho$ in this basis
+
+    \begin{equation}
+        \rho = \sum_j  \frac 1 {|\phi_j|} \rho^k \langle \phi_j , \mu_k \rangle \phi_j
+    \end{equation}
+
+    Taking a inner product of this with itself, we get
+
+    \begin{equation}
+        |\rho|^2 = \sum_j  \rho^l \rho^k \frac 1 {|\phi_j|^2} \langle \phi_j , \mu_k \rangle \langle \phi_j , \mu_l \rangle
+    \end{equation}
+
+    We can now compute the Gaussian
+
+    \begin{align}
+        J_\rho^{-1} &= \int e^{\frac12 |\rho|^2} \\
+            &= e^{\rho^l \sum_j \frac 1 {|\phi_j|^2} \langle \phi_j , \mu_k \rangle \langle \phi_j , \mu_l \rangle \rho^k }\\
+            &= det\left(\sum_j \frac 1 {|\phi_j|^2} \langle \phi_j , \mu_k \rangle \langle \phi_j , \mu_l \rangle \right)^{-\frac12}\\
+            &= \left(\frac {det(\langle \phi_j , \mu_k \rangle)^2} {det(\langle \phi_j, \phi_k \rangle)} \right)^{-\frac12}
+    \end{align}
+
+    Multiplying with the complex conjugate result, we find
+
+    \begin{equation}
+        |J_\rho|^2 = \frac { | det(\langle \phi_j , \mu_k \rangle) | ^2} {det(\langle \phi_j, \phi_k \rangle)}
+    \end{equation}
+
+\subsubsection{Putting it together}
+    Combining our Jacobians, we find
+
+    \begin{equation}
+        J_\omega = J_\phi |J_{\nabla_z V}|^2 |J_\rho|^2 = det(\triangle^-) \frac { | det(\langle \phi_j , \mu_k \rangle) | ^2} {det(\langle \phi_j, \phi_k \rangle)}
+    \end{equation}
+
+    Putting this Jacobian in the $Met(g)$ metric decomposition \label{eq:measure-decomp}, we get
+
+    \begin{equation}
+        \mathcal D g = J \mathcal D m \mathcal D \sigma \mathcal D v =  det(\triangle^-) \frac { | det(\langle \phi_j , \mu_k \rangle) | ^2} {det(\langle \phi_j, \phi_k \rangle)} \mathcal D m \mathcal D \sigma \mathcal D v
+    \end{equation}
+
+    We obtained a measure for $Met(g)$ decomposed exactly like we proposed at the beginning. In fact we can be even more explicit. Let $(m_j, \bar m_j)$ be a basis for $Mod(\Sigma)$, then we can write:
+
+    \begin{equation}
+        \mathcal Dm = \prod_j dm_j d\bar m_j
+    \end{equation}
+
+    We now make one final modification which will seem un-motivated at this point. The motivation will only become clear in a discussion of the Weyl transformation property of the measure in addition to an application of the Fadeev-Poppov procedure. For now we only perform the following re-writing for the sake of completeness.
+
+    Let $\psi_a$ be an orthogonal basis for $Ker \nabla_{\bar z^(1)}$, define:
+
+    \begin{equation}
+        Z^-_{(-1)} (g) \equiv  \frac{det\triangle^-}{det\langle \phi_j, \phi_k\rangle det\langle \psi_a, \psi_b \rangle}
+    \end{equation}
+
+    $Z^-_{(-1)}$ will turn out to be the Fadeev-Poppov determinant. We also rescale our $Diff$ orbit measure to cancel out the $\psi$ factor we added
+
+    \begin{equation}
+        D'v = det\langle \psi_a, \psi_b \rangle Dv
+    \end{equation}
+
+    Then our measure is rewritten as
+
+    \begin{equation}
+        \mathcal D g = \mathcal D \sigma \mathcal D' v Z^-_{(-1)}  | det\langle \phi_j , \mu_k \rangle | ^2 \prod_j dm_j d\bar m_j
+    \end{equation}
+
+    This is what we will call the Polyakov measure.

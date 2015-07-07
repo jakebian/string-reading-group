@@ -7,3 +7,5 @@
 *.bbl
 *.sublime-workspace
 *.out
+*.log
+*.fdb_latexmk
