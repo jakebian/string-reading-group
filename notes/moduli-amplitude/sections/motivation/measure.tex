@@ -1,0 +1,90 @@
+The only result we need about measures is the fact that we can compute a measure by doing a Gaussian integral on the tangent space. Let's review how this works.
+
+
+\subsubsection{Jacobian on Tangent Space}
+
+    Let $M$ be a differentiable manifold, $(U, x)$, $(V, \omega)$ be two different charts with $U \cap V \ne \emptyset$. In the overlap $U \cap V$, the measures defined by the two charts are related by a Jacobian factor
+
+    \begin{equation}
+        d^n x = J d^n \omega
+    \end{equation}
+
+    with
+
+    \begin{equation}
+        J = det \left( \frac{\partial x^\mu}{\partial \omega^\nu} \right)
+    \end{equation}
+
+    A crucial observation will be that $J$ can be computed in the tangent space $T_p M$ for some $p \in U \cap V$. This can be seen as follows. $x$ and $\omega$ define bases $\frac{\partial}{\partial x^\mu}$ and $\frac{\partial}{\partial \omega^\mu}$. Any $V \in T_p M$ can then be written in coordinates
+
+    \begin{equation}
+        V = v^\mu \frac{\partial}{\partial x^\mu} = u^\nu \frac{\partial}{\partial \omega^\nu}
+    \end{equation}
+
+    From this we can read off
+
+    \begin{equation}
+        v^\mu = u^\nu \frac{\partial x^\mu}{\partial \omega^\nu}
+        \label{eq:tangent-coords}
+    \end{equation}
+
+    The Jacobian associated with a coordinate change $\frac{\partial}{\partial x^\mu} \mapsto \frac{\partial}{\partial \omega^\mu}$ on $T_pM$ is:
+
+    \begin{equation}
+        J_T = det\left( \frac{\partial v^\mu}{\partial u^\nu} \right) = det \left( \frac{\partial x^\mu}{\partial \omega^\nu} \right) = J
+    \end{equation}
+
+\subsubsection{Gaussian Measre}
+
+    Now supposed that in the $u^\mu$ coordinates we had
+
+    \begin{equation}
+        \int d^n u ~ e^{-\frac12 |u|^2} = 1
+    \end{equation}
+
+    We know that
+
+    \begin{equation}
+        d^n u = J d^n v
+    \end{equation}
+
+    Subbing into previous line
+
+    \begin{equation}
+        \int d^n u ~ e^{-\frac12 |u|^2} = \int J d^n v ~ e^{-\frac12 |v|^2} = 1
+    \end{equation}
+
+    By the previous section, $J$ is a function of $(x, \omega)$ and not of $(u, v)$, we can pull it out. We then have
+
+    \begin{equation}
+        \int d^n v ~ e^{-\frac12 |v|^2} = J^{-1}
+    \end{equation}
+
+    This is the same $J$ that appears in a coordinate change of the base space $M$
+
+    \begin{equation}
+        d^n x = J d^n \omega
+    \end{equation}
+
+    Thus we have just computed the Jacobian for a coordinate change on $M$ by doing a Gaussian integral in $T_p M$.
+
+    We can phrase all this slightly differently as follows. We start by defining the measure $\mathcal D v$ implicitly by the equation
+
+    \begin{equation}
+        \int \mathcal D v ~ e^{-\frac12 |v|^2} = 1
+    \end{equation}
+
+    Then we say
+
+    \begin{equation}
+        \mathcal D v = J d^n v
+    \end{equation}
+
+    We then read off $J$ by doing the gaussian integral, then use $J$ to obtain our desired measure on the base space.
+
+    Finally, we should also remember how to do Gaussian integrals. Here's the formula
+
+    \begin{equation}
+        \int d^n x ~ e^{x^T A x + Sx} = det(A)^{-\frac12} e^{ - \frac12 S A S^{-1}}
+    \end{equation}
+

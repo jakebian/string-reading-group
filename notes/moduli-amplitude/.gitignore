@@ -2,8 +2,8 @@
 *.log
 *.fdb_latexmk
 *.synctex.gz
-*.pdf
 *.blg
 *.toc
 *.bbl
 *.sublime-workspace
+*.out
