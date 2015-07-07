@@ -100,17 +100,26 @@ We examine each space on the RHS one by one.
     Our task therefore has been reduced to finding $\bar D$. Since $T^{(2, 0)}$ and $T^{(0, 2)}$ are related by complex conjugation, it is sufficient to consider $T^{(2, 0)}$. The crucial result is the following
 
     \begin{prop}
-        $T^{(2,0)} \simeq Im(\nabla^{(1)}_z) \oplus Ker(\nabla^{(2)}_{\bar z}) \oplus CKV$
+        $T^{(2,0)} \simeq Im(\nabla^{(1)}_z) \oplus Ker(\nabla^{(2)}_{\bar z})$
     \end{prop}
 
     \begin{proof}
+        We compute the orthogonal complement of $Im(\nabla^{(1)}_z)$. Let $\nabla_{z}^V \in Im(\nabla^{(1)}_z)$. An element $\phi$ in the orthogonal complement satisfies
+
+        \begin{equation}
+            \langle \nabla_z V, \phi \rangle = \langle V,  \nabla_z ^\dagger \phi \rangle = \langle V,  \nabla_{\bar z}^{(2)} \phi \rangle
+        \end{equation}
+
+        The result follows.
     \end{proof}
 
 
-    To simplify the following arguments, for now let's ignore the $CKV$ part (note they vanish for genus $\ge 2$ anyway) and come back to them. To summarize everything in this section, omitting the $CKV$ subspace, what we have found is
+    Let's sumarize again what we just found:
 
     \begin{prop}
         $T_g Met(\Sigma) = [ T^{(1,1)} \oplus Im(\nabla^{(1)}_z) ] \oplus Ker(\nabla^{(2)}_{\bar z})\oplus cc.$
     \end{prop}
 
     As argued, the subspace in the square brackets (and its complex conjugate counterparts) are tangent to the gauge orbit, while the space of holomorphic differentials $Ker(\nabla^{(2)}_{\bar z})\oplus Ker(\nabla^{(2)}_{z})$ are directions along the gauge slice.
+
+    One more subtlety: in Riemann surfaces with genus $< 2$, there exists diffeomorphism-generating vectors $V \in Ker \nabla^{(1)}_z$. These are conformal Killing vectors. By our discussion we see that the actions of these do not contribute to the diagonal components of $\delta g$.

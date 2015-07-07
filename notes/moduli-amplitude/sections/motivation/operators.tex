@@ -48,10 +48,10 @@
     We can define Lapacians as compositions of these:
 
     \begin{equation}
-        \triangle^+_m \equiv \nabla^z_{(m+1)} \nabla_z^{(m)}~,~ K^{m+1} \to K^{m + 1}
+        \triangle^+_m \equiv \nabla_z^{(m)} \nabla^z_{(m+1)} ~,~ K^{m+1} \to K^{m + 1}
     \end{equation}
     \begin{equation}
-        \triangle^-_m \equiv \nabla_z^{(m-1)} \nabla_z^{(m)}~,~ K^{m-1} \to K^{m - 1}
+        \triangle^-_m \equiv \nabla^z_{(m)} \nabla_z^{(m-1)} ~,~ K^{m-1} \to K^{m - 1}
     \end{equation}
 
     All this can be summarized by a commutative diagram:
@@ -59,9 +59,9 @@
     \begin{equation}
         \begin{tikzcd}[row sep=4.5em]
             & K^{m-1} \\
-            K^{m-1} \arrow{r}{\nabla^z}
-            \arrow{ru}{\triangle^-} & K^m \arrow{u}{\nabla_z}
-            \arrow{r}{\nabla^z} & K^{m+1}\\
-            &K^{m+1} \arrow{ru}{\triangle^+} \arrow{u}{\nabla_z}
+            K^{m-1} \arrow{r}{\nabla_z}
+            \arrow{ru}{\triangle^-} & K^m \arrow{u}{\nabla^z}
+            \arrow{r}{\nabla_z} & K^{m+1}\\
+            &K^{m+1} \arrow{ru}{\triangle^+} \arrow{u}{\nabla^z}
         \end{tikzcd}
     \end{equation}
