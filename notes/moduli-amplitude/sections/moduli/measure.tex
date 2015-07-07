@@ -1,0 +1,62 @@
+Armed with the decomposition derived above, we can write the most general $\omega \in T_gMet(g)$ as
+
+\begin{equation}
+    \omega = \varphi dz \otimes d\bar z + (\nabla_z V + \rho) dz \otimes d z + (\nabla_{\bar z} V + \bar \rho) d\bar z \otimes d \bar z
+\end{equation}
+
+We define a measure $\mathcal D \omega$ by
+
+\begin{equation}
+    \int_{T_g Met(g)} \mathcal D \omega e^{\frac12 |\omega|^2} = 1
+\end{equation}
+
+
+The norm that appears in the exponential is evaluated using our metric inner product. Using the decomposition this reads
+
+\begin{equation}
+    |\omega|^2 = |\varphi|^2 + (|\nabla_z V|^2 + |\rho|^2 + cc.)
+\end{equation}
+
+where we used the orthogonality of $\rho$ and $\nabla_z V$.
+
+
+The decomposition used here is orthogonal, this implies we can write
+
+\begin{equation}
+    \mathcal D \omega = \mathcal D \phi \mathcal
+    ~ D (\nabla_z V)\mathcal
+    ~ D (\nabla_{\bar z} V)
+    ~ \mathcal D \rho \mathcal D \bar \rho
+\end{equation}
+
+with each term in the product a measure defined by a Gaussian:
+
+
+\begin{equation}
+     \int_{T_g Met(g)} \mathcal D \phi ~ e^{\frac12 |\phi|^2} = 1
+\end{equation}
+\begin{equation}
+     \int_{T_g Met(g)} \mathcal D (\nabla_z V) ~ e^{\frac12 |(\nabla_z V)|^2} = 1
+\end{equation}
+\begin{equation}
+     \int_{T_g Met(g)} \mathcal D \rho ~ e^{\frac12 |\rho|^2} = 1
+\end{equation}
+
+
+where the complex conjugate counterparts are similarly defined. The Jacobian $J_\omega$ from $\mathcal D \omega$ is then a product of the Jacobians from these measures:
+
+\begin{equation}
+    J_\omega = J_\phi |J_{\nabla_z V}|^2 |J_\rho|^2
+\end{equation}
+
+
+
+Let's evaluate these measures one by one. First one is easy:
+
+\begin{align}
+     \int_{T_g Met(g)} \mathcal D \phi e^{\frac12 |\phi|^2} &= 1 \\
+        \implies J_\phi &= 1
+\end{align}
+
+
+We can now consider a basis $(\mu_j)_{1 \le j \le dim(Mod(\Sigma))}$ for $Ker(\nabla^{(2)}_{\bar z})$. Such bases (and their complex conjugates) are called \textit{Beltrami Differentials}. 
