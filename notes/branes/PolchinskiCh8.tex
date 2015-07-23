@@ -1,0 +1,238 @@
+\documentclass[12pt,letterpaper]{article}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Page sizing and format                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% for letter size paper:
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+\setlength{\paperheight}{11in}
+\setlength{\paperwidth}{8.5in}
+
+
+% one inch margins all around
+\textwidth=6.5truein
+\textheight=8.6truein  % leaves room for page numbers, adds up to 9in with \footskip
+
+% additional options to change how things fit into a page
+% assuming with no headers and a page number
+
+\hoffset=0truein
+\oddsidemargin = 0pt
+
+\voffset=0truein
+\topmargin=0pt
+\headheight=0pt
+\headsep=0pt
+\footskip = 30pt
+
+
+\linespread{1.1}
+\parskip=0mm
+\parindent=5.0mm
+
+% \pagestyle{empty}
+% \pagestyle{headings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Packages                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}%
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+%\usepackage{pstricks}
+%\usepackage{auto-pst-pdf}
+\usepackage{epsfig,graphicx}
+%\usepackage{lineno}
+%\usepackage{showlabels}
+%\usepackage{showkeys}
+
+\usepackage{amsfonts}
+
+% \usepackage{graphicx}
+
+% \usepackage{rangecite}
+
+
+% for extra symbols (eg, \celsius)
+% \usepackage{gensymb}
+
+% for complicated tables
+% \usepackage{multirow} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  GENERAL PURPOSE DEFINITIONS                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bear{\begin{eqnarray}}
+\def\eear{\end{eqnarray}}
+\def\nn{\nonumber}
+
+\def\half{{{\frac{1}{2}}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Start here                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{Polchinski Chapter 8 \\ Open String and D-branes}
+\date{}
+\maketitle
+
+\section*{8.6 Open Strings}
+\subsection*{Wilson Lines}
+Open strings, under toroidal compactification, allow for a new feature which is a nontrivial Wilson Line.  We can consider a U(1) gauge theory with a constant gauge field in the compactified direction
+\be
+A_{25}(x^{M})=-\frac{\theta}{2\pi R}=-i\Lambda^{-1}\frac{\partial \Lambda}{\partial x^{25}}\;\;\;,\;\;\;\Lambda(x^{25})=\exp{\left(\frac{-i\theta x^{25}}{2\pi R}\right)}.
+\ee
+This is locally pure gauge which implies the field strength vanishes and the equations of motion are trivial.  However, because of the compactification, the gauge parameter $\Lambda$ does not satisfy the periodicity which forces us to consider the background.  We can construct a gauge-invariant quantity, the so-called Wilson line, which will measure the effect of the background on the gauge parameter
+\be
+W_{q}=\exp\left(iq\oint dx^{25}A_{25}\right)=\exp(-iq\theta).
+\ee
+
+
+To exhibit the issue, let us first consider a point particle of charge q with the gauge action $-iq\int dx^{M}A_{M}$.  Each time the path wraps around the compact dimension, the action picks up a phase equal to the Wilson line.  We get that the canonical momentum depends on the angle $\theta$ as
+\be
+p_{25}=-\frac{\partial \mathcal{L}}{\partial v^{25}}=v^{25}-\frac{q\theta}{2\pi R}.
+\ee
+The periodicity of the momentum implies a relation for $v_{25}$
+\be
+v_{25}=\frac{2\pi l+q\theta}{2\pi R},
+\ee
+where $l$ is an integer.  This dependence on $\theta$ in $v_{25}$ shifts the mass of the particle which can be seen by going to the Hamiltonian
+\be
+H=\frac{1}{2}\left(p^{\mu}p_{\mu}+v^{2}_{25}+m^{2}\right).
+\ee
+
+We will now go back to the string and look at the effect of these Wilson lines on the string action.  For the string, the endpoints contain a colour U(n) charge , the Chan-Patton factors.  In this case, the equivalent of the constant gauge field for $A_{25}$ is a diagonal $n\times n$ matrix with entries
+\be
+A_{25}= -\frac{1}{2\pi R}\;diag\left(\theta_{1},\theta_{2},...,\theta_{n}\right).
+\ee
+
+Applying the same logic as for the point particle, we get that $v_{25}$ is translated by the two angles $\theta_{i},\theta_{j}$ associated with its endpoints according to
+\be\label{vWilson}
+v_{25}=\frac{2\pi l-\theta_{i}+\theta_{j}}{2\pi R}.
+\ee
+
+Once again, this creates a shift in the mass spectrum.  The open string mass spectrum becomes
+\be\label{mass}
+m^{2}=\frac{\left(2\pi l-\theta_{i}+\theta_{j}\right)^{2}}{4\pi^{2}R^{2}}+\frac{1}{\alpha^{\prime}}\left(N-1\right).
+\ee
+
+In particular, we are interested by the $l=0, N=1$ gauge bosons.  These were previously our massless photons in the theory but now, they receive a mass 
+\be
+m^{2}=\frac{\left(\theta_{i}-\theta_{j}\right)^{2}}{4\pi^{2}R^{2}}.
+\ee
+In general, all the $\theta$s can be different which leaves only the diagonal vectors, those with $i=j$, to be massless.  This leaves us with an unbroken $U(1)^{n}$ gauge group.  Similarly, if a number $r<n$ of angles $\theta$ are the same, this enhances the symmetry to $U(r)\times U(1)^{n-r}$.
+
+\subsection*{T-duality}
+We know that closed strings do not differentiate between small and large compactification radii as they confuse momentum and winding number leaving the physics invariant under T-duality.  It would be interesting to understand what happens to open strings under compactification to see if T-duality is truly a duality of the full string theory.  
+
+Considering an open string on a manifold with the $x^{25}$ direction to be compactified, we see that while the closed strings could wind around the compact dimension, open strings do not have such a property as, topologically, they can always be shrunk to a point.  Their mass spectrum therefore only depends on how stretched they are, but not on a winding number as the closed strings.  As we take the compactification radius to zero $R\rightarrow0$, all strings with non-zero momentum get an infinite mass.  What happens is just like in field theory, the open string only propagates in 25 dimensions while the closed string still propagates in 26 dimensions as we take $R\rightarrow0$.
+
+To see this, we proceed in the same way as for the closed string and define a dual coordinate
+\be
+\tilde{X}^{25}(z,\bar{z})=X^{25}_{L}(z)-X^{25}_{R}(\bar{z}).
+\ee
+Then, the Neumann boundary conditions on the original coordinates becomes a Dirichlet boundary condition on the dual coordinates
+\be\label{NeuDich}
+\partial_{n}X^{25}=-i\partial_{t}\tilde{X}^{25},
+\ee
+where n and t represent normal and tangent directions at the boundary.  If we do not consider the Wilson lines, the distance between both endpoints of the open string is
+\bear
+\tilde{X}^{25}(\pi)-\tilde{X}^{25}(0)&=&\int_{0}^{\pi} d\sigma^{1}\partial_{1}\tilde{X}^{25}=-i\int_{0}^{\pi} d\sigma^{1}\partial_{2}X^{25}\nn\\
+&=&-2\pi\alpha^{\prime}v^{25}=-\frac{2\pi\alpha^{\prime}l}{R}=-2\pi l\tilde{R},
+\eear
+where $\tilde{R}$ is the dual radius.  We see that the string can wrap around the circular dimension any integer number of times but its endpoints are fixed to the same hyperplane with Dirichlet boundary conditions as specified by equation (\ref{NeuDich}).
+
+When we take the Wilson line in account, $v^{25}$ is modified according to \ref{vWilson} and the endpoints separation becomes
+\be
+\Delta\tilde{X}^{25}=\tilde{X}^{25}(\pi)-\tilde{X}^{25}(0)=-\left(2\pi l-\theta_{i}+\theta_{j}\right)\tilde{R}.
+\ee
+Now the endpoints do not have to lie on the same hyperplane anymore, but are fixed to any hyperplane whose location is described by the angles $\theta$.  The mass of the string is given by relation (\ref{mass})
+\be
+m^{2}=\left(\frac{\Delta\tilde{X}^{25}}{2\pi\alpha^{\prime}}\right)^{2}+\frac{1}{\alpha^{\prime}}\left(N-1\right).
+\ee
+which is exactly the same as the original open string spectrum where the string is stretched over a length $\Delta\tilde{X}^{25}$.  
+
+The angles $\theta$ which appeared to be mathematical artefacts have in fact a very physical interpretation.  We realize that under T-duality, compactification on a small circle with Neumann boundary conditions is equivalent to compactification on a large circle with Dirichlet boundary conditions where the string's endpoints are fixed to specific hyperplanes.  These hyperplanes are called D-branes.  The discovery of D-branes happened by trying to understand what happens to open string under T-duality but it took a long time for the string community to appreciate their physical relevance.  It is Polchinski who first realized that D-branes were not static objects but dynamical objects in their own rights while excitations of open strings attached to them would create fluctuations of their geometry.  
+
+\section*{8.7 D-branes}
+Let us look at the massless $N=1$ spectrum of the open string.  These are strings with both endpoints on the same hyperplane and no winding.  There are two kinds of states,
+\be
+\alpha_{-1}^{\mu}|k;ii>\;\;\;,\;\;\;\alpha_{-1}^{25}|k;ii>
+\ee
+The 25 states with tangent polarization $\alpha_{-1}^{\mu}|k;ii>$ form a gauge field living on the hyperplane.  The other state, $\alpha_{-1}^{25}|k;ii>$ is a state with perpendicular polarization and after T-duality, this is interpreted as a collective coordinate for the shape of the hyperplane and the quanta of the field $A^{25}_{ii}$ corresponds to small transverse oscillations of the D-brane.
+
+We can also understand that the D-brane's shape must not stay rigid from the fact that closed strings can pass through them warping spacetime.  The hyperplanes must therefore accommodate themselves with
+these changes in spacetime and be dynamical themselves.
+
+\subsection*{D-brane Action}
+We will be interested in the low energy action for a single brane taking the dual radius $\tilde{R}$ to infinity.  Most references state the action for the D-brane before giving an explanation of its structure.  We will do the same here.  There are two fields on living on the brane, the embedding coordinates $X^{\mu}(\xi)$ and the gauge field $A_{\mu}(\xi)$ where $\xi^{a}$ are the coordinates on the brane with $a=0,1,...p$.  These fields need to mix with the massless closed string fields $G_{\mu\nu}$, $B_{\mu\nu}$ and $\Phi$.  We claim the appropriate action is 
+\be\label{BIaction}
+S_{p}=-T_{p}\int d^{p+1}\xi\;e^{-\Phi}\left[-\det\left(G_{ab}+B_{ab}+2\pi\alpha^{\prime}F_{ab}\right)\right]^{1/2},
+\ee
+where $T_{p}$ is the tension of a Dp-brane which we will examine later.  The fields $G_{ab}$ and $B_{ab}$ are the pullback of the spacetime fields $G_{\mu\nu}$ and $B_{\mu\nu}$ to the brane worldvolume
+\be
+G_{ab}=\frac{\partial X^{\mu}}{\partial \xi^{a}}\frac{\partial X^{\nu}}{\partial \xi^{b}}G_{\mu\nu}\;\;\;,\;\;\;B_{ab}=\frac{\partial X^{\mu}}{\partial \xi^{a}}\frac{\partial X^{\nu}}{\partial \xi^{b}}B_{\mu\nu}.
+\ee
+Let us now try to understand each piece of the action.  The first part $-\det(G_{ab})^{1/2}$ corresponds to the fluctuations of the geometry of the D-brane and is simply a higher dimensional equivalent of the Nambu-Goto action.  
+
+The dilaton dependence $e^{-\Phi}\propto g_{c}^{-1}$ comes in because we are looking at open string tree amplitudes.  Interactions of open strings within themselves and with closed strings at tree level arise from the disk amplitudes.
+
+We can understand the dependence on $F_{ab}$ from T-duality.  Let us consider a D-brane extended in the $X^{1}$ and $X^{2}$ directions with the other directions unspecified and let us put a constant gauge field $F_{12}$ on the brane.  We go to the gauge $A_{2}=X^{1}F_{12}$ and T-dualize the 2-direction.  Under T-duality, the gauge field in the 2-direction becomes a scalar satisfying
+\be
+\tilde{X}^{2}=-2\pi\alpha^{\prime}X^{1}F_{12},
+\ee
+meaning the D-brane is tilted in the 1-direction.  This adds a factor in the action
+\be
+\int dX^{1}\left[1+\left(\partial_{1}\tilde{X}^{2}\right)^{2}\right]^{1/2}=\int dX^{1}\left[1+\left(2\pi\alpha^{\prime}F_{12}\right)^{2}\right]^{1/2},
+\ee
+which is the same factor as in the action (\ref{BIaction}).  The determinant form of the gauge field is called the Born-Infeld action and is known from non-linear electromagnetism.  
+
+The last term to figure out is the dependence on $B_{ab}$ in the action (\ref{BIaction}).  To understand that term, we argue that spacetime gauge invariance of the theory needs to be preserved for the action to make sense.  From the point of view of the string worldsheet action, the B and A terms are included as
+\be
+\frac{i}{2\pi\alpha^{\prime}}\int_{M}B+i\int_{\partial M}A.
+\ee
+Under a gauge transform of the Kalb-Ramond field, we get
+\be
+\delta B_{\mu\nu}=\partial_{\mu}\zeta_{\nu}-\partial_{\nu}\zeta_{\mu},
+\ee
+while the gauge field A transforms in the ordinary way
+\be
+\delta A_{\mu}=\partial_{\mu}\lambda.
+\ee
+The transformation of B, while integrated on the worldsheet gives a total derivative contribution which from Stokes theorem is the same as an integral on the boundary
+\be
+\frac{i}{2\pi\alpha^{\prime}}\int_{M}\delta B=\frac{i}{2\pi\alpha^{\prime}}\int_{\partial  M} \zeta.
+\ee
+Therefore, the action will be gauge invariant if the gauge transformation of B cancels the one for A on the boundary.  That is, if
+\be
+\delta A_{\mu}=\partial_{\mu}\lambda=-\frac{\zeta_{\mu}}{2\pi\alpha^{\prime}}.
+\ee
+This implies the combination 
+\be
+B_{\mu\nu}+2\pi\alpha^{\prime}F_{\mu\nu}
+\ee
+is the only term that is invariant under both gauge transformations which explains the $B_{ab}$ term in action (\ref{BIaction}).
+
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  EXAMPLES FOR FIGURES, ETC...                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\parbox[l]{2.5in}{
+\includegraphics[scale=0.9]{file.png}
+\includegraphics[scale=0.9]{file.pdf}
+\fi}
