@@ -14,11 +14,12 @@ Notes and selected problem solutions from a string theory reading group at UBC i
 - [Week 5: BRST (Matt)](notes/BRST)
 - [Week 6: The String Measure (Laurent)](notes/string-measure)
 - [Week 7: Moduli Space & Polyakov Measure (Jake)](notes/moduli-amplitude)
-- [Week 8: Toroidal Compactification and T-Duality of Closed Strings](notes/toroid)
+- [Week 8: Toroidal Compactification and T-Duality of Closed Strings (Stephen)](notes/toroid)
+- [Week 9: D-Branes(Laurent)](notes/branes)
 
 ## Contributing
 
-If you're a member in the group, give me your github username and you will be granted push access. For notes & problem sets you can add files with any of the following formats:
+If you're a member in the group, give me your github username and you will be granted push access. For notes you can add files with any of the following formats:
 
 - pdf
 - tex
